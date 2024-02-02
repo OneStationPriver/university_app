@@ -7,6 +7,8 @@ class AppColors {
   static const Color textUnderlinedColor = Color(0xff841FFD);
   static const Color containerButtonColor = Color(0xff841FFD);
   static const Color textButtonColor = Colors.white;
+  static const Color textTitleHomeColor = Color(0xff7B61FF);
+  static const Color textTitleHome2Color = Color.fromRGBO(0, 0, 0, 0.6);
 }
 
  // static const Color backgroundColor = Color(0xff007CFF);

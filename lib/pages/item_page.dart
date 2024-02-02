@@ -1,8 +1,8 @@
 import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:university_app/helper/app_text_style.dart';
+import 'package:university_app/helper/data_test/data_test.dart';
 import 'package:university_app/helper/ratio_calculator.dart';
-import 'package:university_app/pages/page_about.dart';
 
 class ItemPage extends StatefulWidget {
   final String title;
@@ -27,7 +27,7 @@ class ItemPage extends StatefulWidget {
 
 class _ItemPageState extends State<ItemPage> {
   final RatioCalculator ratioCalculator = RatioCalculator();
-
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +60,7 @@ class _ItemPageState extends State<ItemPage> {
             ),
             widget.isBody
                 ? Container(
-                    height: ratioCalculator.calculateHeight(150),
+                    height: ratioCalculator.calculateHeight(155),
                     margin: EdgeInsets.only(
                         left: ratioCalculator.calculateWidth(44),
                         right: ratioCalculator.calculateWidth(45)),

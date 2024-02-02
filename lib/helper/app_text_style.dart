@@ -22,6 +22,21 @@ class AppTextStyle {
       fontSize: 16,
       fontWeight: FontWeight.w500,
       color: AppColors.textButtonColor);
+  static const text20W700TextStyle = TextStyle(
+      fontFamily: 'Hanuman',
+      fontSize: 20,
+      fontWeight: FontWeight.w700,
+      color: AppColors.textTitleHomeColor);
+  static const text20W400TextStyle = TextStyle(
+      fontFamily: 'Hanuman',
+      fontSize: 20,
+      fontWeight: FontWeight.w400,
+      color: AppColors.textTitleColor);
+  static const text16W500TextStyle2 = TextStyle(
+      fontFamily: 'Poppins',
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+      color: AppColors.textTitleHome2Color);
 }
 
   // static const titleTextStyle = TextStyle(

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:university_app/helper/app_colors.dart';
 import 'package:university_app/helper/app_text_style.dart';
+import 'package:university_app/helper/data_test/data_test.dart';
 import 'package:university_app/helper/ratio_calculator.dart';
+import 'package:university_app/pages/home_page.dart';
 import 'package:university_app/pages/item_page.dart';
-import 'package:university_app/pages/page_about.dart';
-import 'package:university_app/pages/page_about_2.dart';
-import 'package:university_app/pages/page_agreement_unread.dart';
-import 'package:university_app/pages/page_welcome.dart';
 
 void main() {
   runApp(const MyApp());
@@ -43,6 +41,8 @@ class _PageState extends State<Page> {
 
   @override
   Widget build(BuildContext context) {
+    String t = courser["coursers"][0]["url_image"];
+
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -82,9 +82,9 @@ class _PageState extends State<Page> {
                     title: "Congratulations!",
                     image: "assets/images/img5.png",
                     isBody: false,
-                    text1: "You have reached the end of our introduction. We are excited to enroll you to our online Mock University.Thank you for choosing us and “Happy Mocking” !",
-                    text:
-                        "Best Wishes,\n Mock University",
+                    text1:
+                        "You have reached the end of our introduction. We are excited to enroll you to our online Mock University.Thank you for choosing us and “Happy Mocking” !",
+                    text: "Best Wishes,\n Mock University",
                   ),
                 ],
               ),
@@ -99,10 +99,23 @@ class _PageState extends State<Page> {
                     borderRadius: BorderRadius.circular(5),
                     color: AppColors.containerButtonColor,
                   ),
-                  child: Center(
-                    child: Text(
-                      "Continuar",
-                      style: AppTextStyle.text16W500TextStyle,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomePage(),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.buttonColor,
+                    ),
+                    child: Center(
+                      child: Text(
+                        "Continuar",
+                        style: AppTextStyle.text16W500TextStyle,
+                      ),
                     ),
                   ),
                 ),
