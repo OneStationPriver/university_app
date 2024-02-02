@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:university_app/helper/app_text_style.dart';
 import 'package:university_app/helper/ratio_calculator.dart';
@@ -6,9 +7,19 @@ import 'package:university_app/pages/page_about.dart';
 class ItemPage extends StatefulWidget {
   final String title;
   final String image;
+  String textMarcado;
+  String text1;
   final String text;
-  final Color color;
-  const ItemPage({super.key, required this.title, required this.image, required this.text, required this.color});
+  bool isBody;
+
+  ItemPage(
+      {super.key,
+      required this.title,
+      required this.image,
+      required this.text,
+      this.text1 = "",
+      this.textMarcado = "",
+      this.isBody = false});
 
   @override
   State<ItemPage> createState() => _ItemPageState();
@@ -24,14 +35,11 @@ class _ItemPageState extends State<ItemPage> {
         child: Column(
           children: [
             Container(
-              padding:
-                  EdgeInsets.only(top: ratioCalculator.calculateHeight(68)),
-              margin: EdgeInsets.only(
-                  left: ratioCalculator.calculateWidth(138),
-                  right: ratioCalculator.calculateWidth(137)),
+              margin: EdgeInsets.only(top: ratioCalculator.calculateHeight(70)),
               child: Text(
-                titulo,
+                widget.title,
                 style: AppTextStyle.text24W300TextStyle,
+                textAlign: TextAlign.center,
               ),
             ),
             SizedBox(
@@ -42,38 +50,76 @@ class _ItemPageState extends State<ItemPage> {
                   left: ratioCalculator.calculateWidth(45),
                   right: ratioCalculator.calculateWidth(45)),
               child: Image(
-                image: AssetImage("assets/images/img1.png"),
+                image: AssetImage(widget.image),
                 width: ratioCalculator.calculateWidth(300),
                 height: ratioCalculator.calculateHeight(207),
               ),
             ),
             SizedBox(
-              height: ratioCalculator.calculateHeight(70),
+              height: ratioCalculator.calculateHeight(widget.isBody ? 30 : 70),
             ),
-            Row(
-              children: [
-                Container(
-                  margin: EdgeInsets.only(
-                    left: ratioCalculator.calculateWidth(44),
-                    right: ratioCalculator.calculateWidth(45),
-                  ),
-                  width: ratioCalculator.calculateWidth(301),
-                  height: ratioCalculator.calculateHeight(144),
-                  child: RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(text: "Mock University ", style: AppTextStyle.text16W600TextStyle),
-                        TextSpan(
-                          text:
-                              "is one stop platform where user can attend different mock-exams with ease of our mobile and web app. This not just provides the mock- exams, it gives user the better understanding of the topic.",
-                          style: AppTextStyle.text16W400TextStyle,
-                        ),
-                      ],
+            widget.isBody
+                ? Container(
+                    height: ratioCalculator.calculateHeight(150),
+                    margin: EdgeInsets.only(
+                        left: ratioCalculator.calculateWidth(44),
+                        right: ratioCalculator.calculateWidth(45)),
+                    child: RawScrollbar(
+                      thumbColor: Colors.purple,
+                      radius: Radius.circular(16),
+                      thickness: 7,
+                      child: SingleChildScrollView(
+                        child: Text(widget.text),
+                      ),
                     ),
+                  )
+                : Row(
+                    children: [
+                      widget.isBody
+                          ? Container(
+                              margin: EdgeInsets.only(
+                                left: ratioCalculator.calculateWidth(44),
+                                right: ratioCalculator.calculateWidth(45),
+                              ),
+                              width: ratioCalculator.calculateWidth(301),
+                              height: ratioCalculator.calculateHeight(155),
+                              child: RichText(
+                                text: TextSpan(
+                                  children: [
+                                    TextSpan(
+                                        text: widget.textMarcado,
+                                        style:
+                                            AppTextStyle.text16W600TextStyle),
+                                    TextSpan(
+                                      text: widget.text,
+                                      style: AppTextStyle.text16W400TextStyle,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )
+                          : Container(
+                              margin: EdgeInsets.only(
+                                left: ratioCalculator.calculateWidth(44),
+                                right: ratioCalculator.calculateWidth(45),
+                              ),
+                              width: ratioCalculator.calculateWidth(301),
+                              height: ratioCalculator.calculateHeight(210),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(widget.text1,
+                                      style: AppTextStyle.text16W400TextStyle),
+                                  SizedBox(
+                                    height: ratioCalculator.calculateHeight(10),
+                                  ),
+                                  Text(widget.text,
+                                      style: AppTextStyle.text16W400TextStyle),
+                                ],
+                              ),
+                            ),
+                    ],
                   ),
-                ),
-              ],
-            )
           ],
         ),
       ),

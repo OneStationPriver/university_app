@@ -55,13 +55,37 @@ class _PageState extends State<Page> {
                   ItemPage(
                     title: "Welcome",
                     image: "assets/images/img1.png",
+                    textMarcado: "Mock University ",
                     text:
                         "is one stop platform where user can attend different mock-exams with ease of our mobile and web app. This not just provides the mock- exams, it gives user the better understanding of the topic.",
-                    color: Colors.purple,
                   ),
-                  PageAbout(),
-                  PageAbout2(),
-                  PageAgreementUnread(),
+                  ItemPage(
+                    title: "About",
+                    image: "assets/images/img2.png",
+                    text:
+                        "All mock exam contains details explanations of each question, you will have opportunity to view details. You can open test in Learning mode or Exam mode.",
+                  ),
+                  ItemPage(
+                    title: "About",
+                    image: "assets/images/img3.png",
+                    text:
+                        "Learning mode is not time limited and you can view answer immediately and review topic. You can only review topics and correct answer after submission of the test.",
+                  ),
+                  ItemPage(
+                    title: "Content consent and user agreement",
+                    image: "assets/images/img4.png",
+                    isBody: true,
+                    text:
+                        "All mock exam contains details explanations of each question, you will have opportunity to view details. You can open test in Learning mode or Exam mode.All mock exam contains details explanations of each question, you will have opportunity to view detailsAll mock exam contains details explanations of each question, you will have opportunity to view detailsAll mock exam contains details explanations of each question, you will have opportunity to view detailsAll mock exam contains details explanations of each question, you will have opportunity to view detailsAll mock exam contains details explanations of each question, you will have opportunity to view details",
+                  ),
+                  ItemPage(
+                    title: "Congratulations!",
+                    image: "assets/images/img5.png",
+                    isBody: false,
+                    text1: "You have reached the end of our introduction. We are excited to enroll you to our online Mock University.Thank you for choosing us and “Happy Mocking” !",
+                    text:
+                        "Best Wishes,\n Mock University",
+                  ),
                 ],
               ),
             ),
