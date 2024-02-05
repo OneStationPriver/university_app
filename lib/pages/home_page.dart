@@ -115,9 +115,9 @@ class _CardCourseState extends State<CardCourse> {
   final RatioCalculator ratioCalculator = RatioCalculator();
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       mainAxisAlignment: MainAxisAlignment.start,
-      children: [
+      children: <Widget>[
         Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
@@ -142,22 +142,30 @@ class _CardCourseState extends State<CardCourse> {
                 Container(
                   color: Color.fromRGBO(25, 38, 63, 0.03),
                   padding: EdgeInsets.only(
-                      left: ratioCalculator.calculateWidth(13.54), 
-                      top: ratioCalculator.calculateHeight(6.77),),
+                    left: ratioCalculator.calculateWidth(13.54),
+                    top: ratioCalculator.calculateHeight(6.77),
+                  ),
                   width: ratioCalculator.calculateWidth(169.23),
                   height: ratioCalculator.calculateHeight(50.85),
                   child: RichText(
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          text: widget.titleCourser + "\n",
+                          text: widget.titleCourser,
                           style: TextStyle(
                               fontSize: 13.54,
                               color: Colors.black,
                               fontWeight: FontWeight.w500),
                         ),
+                        WidgetSpan(
+                            child: Icon(
+                              Icons.verified,
+                              color: Colors.black,
+                              size: 18,
+                            ),
+                          ),
                         TextSpan(
-                          text: widget.duration,
+                          text: "\n" + widget.duration,
                           style: TextStyle(fontSize: 10.15, color: Colors.grey),
                         ),
                       ],

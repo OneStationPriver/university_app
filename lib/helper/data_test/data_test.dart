@@ -16,7 +16,7 @@ const Map<String,dynamic> courser = {
       "is_favorite" : true},
     
     {"url_image": 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Google-flutter-logo.svg/2560px-Google-flutter-logo.svg.png',
-      "title":"Flutter Certification",
+      "title":"Flutter Course",
       "duration":"1h, 15min",
       "is_favorite" : true}
   ],
