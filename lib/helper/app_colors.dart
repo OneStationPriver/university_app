@@ -9,6 +9,9 @@ class AppColors {
   static const Color textButtonColor = Colors.white;
   static const Color textTitleHomeColor = Color(0xff7B61FF);
   static const Color textTitleHome2Color = Color.fromRGBO(0, 0, 0, 0.6);
+  static const Color textTitleCardColor = Colors.black;
+  static const Color textCardColor = Colors.grey;
+  static const Color cardContainer2Color = Color.fromRGBO(25, 38, 63, 0.03);
 }
 
  // static const Color backgroundColor = Color(0xff007CFF);
