@@ -73,6 +73,21 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 0,
+        //fixedColor: Colors.purple,
+        selectedItemColor: Color.fromRGBO(123, 97, 255, 1),
+        unselectedItemColor: Colors.grey,
+        unselectedLabelStyle: TextStyle(color: Colors.grey),
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
+          BottomNavigationBarItem(icon: Icon(Icons.pages), label: "Exams"),
+          BottomNavigationBarItem(icon: Icon(Icons.save), label: "Wishits"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.account_balance), label: "Acounts"),
+        ],
+      ),
     );
   }
 }
@@ -97,27 +112,63 @@ class CardCourse extends StatefulWidget {
 }
 
 class _CardCourseState extends State<CardCourse> {
-    final RatioCalculator ratioCalculator = RatioCalculator();
+  final RatioCalculator ratioCalculator = RatioCalculator();
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Column(
-        children: <Widget>[
-          Image.network(
-            'https://picsum.photos/250?image=9',
-            height: ratioCalculator.calculateHeight(119),
-            width: ratioCalculator.calculateHeight(145),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
           ),
-          Text(
-            'Título de la tarjeta',
-            style: TextStyle(fontSize: 20),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.0),
+              color: Colors.white,
+            ),
+            width: ratioCalculator.calculateWidth(169.23),
+            height: ratioCalculator.calculateHeight(170.92),
+            child: Column(
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.all(16.92),
+                  child: Image.network(
+                    widget.urlImage,
+                    height: ratioCalculator.calculateHeight(81.23),
+                    width: ratioCalculator.calculateHeight(135.38),
+                  ),
+                ),
+                Container(
+                  color: Color.fromRGBO(25, 38, 63, 0.03),
+                  padding: EdgeInsets.only(
+                      left: ratioCalculator.calculateWidth(13.54), 
+                      top: ratioCalculator.calculateHeight(6.77),),
+                  width: ratioCalculator.calculateWidth(169.23),
+                  height: ratioCalculator.calculateHeight(50.85),
+                  child: RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: widget.titleCourser + "\n",
+                          style: TextStyle(
+                              fontSize: 13.54,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500),
+                        ),
+                        TextSpan(
+                          text: widget.duration,
+                          style: TextStyle(fontSize: 10.15, color: Colors.grey),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
-          Text(
-            'Lorem ipsum douctor fringilla.',
-            style: TextStyle(fontSize: 16),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

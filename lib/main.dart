@@ -84,7 +84,7 @@ class _PageState extends State<Page> {
                     isBody: false,
                     text1:
                         "You have reached the end of our introduction. We are excited to enroll you to our online Mock University.Thank you for choosing us and “Happy Mocking” !",
-                    text: "Best Wishes,\n Mock University",
+                    text: "Best Wishes,\nMock University",
                   ),
                 ],
               ),
