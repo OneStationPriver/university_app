@@ -47,6 +47,11 @@ class AppTextStyle {
       fontSize: 10.15,
       fontWeight: FontWeight.w400,
       color: AppColors.textCardColor);
+  static const text16W500HomeTextStyle = TextStyle(
+      fontFamily: 'Poppins',
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+      color: AppColors.textTitle2CardColor);
 }
 
 
