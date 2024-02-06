@@ -17,6 +17,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> listCourser = courser["coursers"];
+    List<Map<String, dynamic>> listCategory = category["categorys"];
 
     return Scaffold(
       body: SafeArea(
@@ -57,6 +58,7 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: ratioCalculator.calculateHeight(8),
             ),
+            // Card de Recommended for You:
             Container(
               margin:
                   EdgeInsets.only(left: ratioCalculator.calculateWidth(25.38)),
@@ -76,13 +78,33 @@ class _HomePageState extends State<HomePage> {
                   }),
             ),
             SizedBox(
-              height: 20,
+              height: ratioCalculator.calculateHeight(7.54),
             ),
             Container(
+              margin: EdgeInsets.only(left: ratioCalculator.calculateWidth(30)),
+              padding: EdgeInsets.only(
+                  bottom: ratioCalculator.calculateHeight(17.42)),
               child: Text(
                 "Categories",
                 style: AppTextStyle.text16W500HomeTextStyle,
               ),
+            ),
+            // Card de categories:
+            Container(
+              margin:
+                  EdgeInsets.only(left: ratioCalculator.calculateWidth(25.54)),
+              height: 102.15, // o utilizar 64.27
+              child: ListView.builder(
+                  itemCount: listCategory.length,
+                  scrollDirection: Axis
+                      .horizontal, // Esto vuelve la lista para deslizar de forma lateral.
+                  itemBuilder: (context, index) {
+                    // return Image.network(r[index]);
+                    return CardCategories(
+                      urlIcon: listCategory[index]["icon"],
+                      titleCategories: listCategory[index]["title"],
+                    );
+                  }),
             ),
           ],
         ),
@@ -90,7 +112,10 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: 0,
         //fixedColor: Colors.purple,
+        showUnselectedLabels:
+            true, // Con esto se muestra el texto de los iconos de lo contrario no se veran.
         selectedItemColor: Color.fromRGBO(123, 97, 255, 1),
+        backgroundColor: Color.fromRGBO(0, 0, 0, 0.02),
         unselectedItemColor: Colors.grey,
         unselectedLabelStyle: TextStyle(color: Colors.grey),
         items: <BottomNavigationBarItem>[
@@ -106,8 +131,7 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-// child: Text("${listCourser[index]["url_image"]}"));
-
+// Clase para la Primera Card...
 class CardCourse extends StatefulWidget {
   final String urlImage;
   final String titleCourser;
@@ -171,11 +195,11 @@ class _CardCourseState extends State<CardCourse> {
                         children: [
                           Container(
                             width: ratioCalculator.calculateWidth(
-                                121), // Este es el width que marca cuanto ocuapra el teecto del overflow antes de aparecer los 3 puntos.
+                                121), // Este es el width que marca cuanto ocupara el texto del overflow antes de aparecer los 3 puntos.
                             child: Text(
                               widget.titleCourser,
                               overflow: TextOverflow
-                                  .ellipsis, // Con el overflow le decimos que si el texto es mayor al width de el container donde esta que lo maque con 3 puntos.
+                                  .ellipsis, // Con el overflow le decimos que si el texto es mayor al width de el container donde esta que lo marque con 3 puntos.
                               style: AppTextStyle.text13W500TextStyle,
                             ),
                           ),
@@ -203,13 +227,57 @@ class _CardCourseState extends State<CardCourse> {
   }
 }
 
+// Clase para el Segundo Card...
+class CardCategories extends StatefulWidget {
+  final String urlIcon;
+  final String titleCategories;
+
+  const CardCategories({
+    super.key,
+    required this.urlIcon,
+    required this.titleCategories,
+  });
+
+  @override
+  State<CardCategories> createState() => _CardCategoriesState();
+}
+
+class _CardCategoriesState extends State<CardCategories> {
+  final RatioCalculator ratioCalculator = RatioCalculator();
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(31.92),
+          ),
+          child: Column(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(31.92),
+                  color: AppColors.containerCategoriesColor,
+                ),
+                width: ratioCalculator.calculateWidth(63.85),
+                height: ratioCalculator.calculateHeight(64.27),
+              ),
+            ],
+          ),
+        ),
+        Container(
+          padding: EdgeInsets.only(top: ratioCalculator.calculateHeight(7.24)),
+          child: Text(
+            widget.titleCategories,
+            textAlign: TextAlign.center,
+            style: AppTextStyle.text10W500HomeTextStyle,
+          ),
+        ),
+      ],
+    );
+  }
+}
 
 
-// TextSpan(
-//                               text:,
-//                               ,
-//                             ),
-//                             TextSpan(
-//                               text: "\n" + widget.duration,
-//                               ),
-//                             ),
+// Nota: Tener mucho cuidado con los nombres en JSon al momento de mostrarlos...
