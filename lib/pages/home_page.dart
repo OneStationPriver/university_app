@@ -18,6 +18,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> listCourser = courser["coursers"];
     List<Map<String, dynamic>> listCategory = category["categorys"];
+    List<Map<String, dynamic>> listCourserDos = courserDos["coursersDos"];
 
     return Scaffold(
       body: SafeArea(
@@ -26,7 +27,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             Container(
               margin: EdgeInsets.only(
-                  top: ratioCalculator.calculateHeight(74),
+                  top: ratioCalculator.calculateHeight(31),
                   left: ratioCalculator.calculateWidth(30)),
               child: RichText(
                 text: TextSpan(
@@ -68,7 +69,6 @@ class _HomePageState extends State<HomePage> {
                   scrollDirection: Axis
                       .horizontal, // Esto vuelve la lista para deslizar de forma lateral.
                   itemBuilder: (context, index) {
-                    // return Image.network(r[index]);
                     return CardCourse(
                       urlImage: listCourser[index]["url_image"],
                       titleCourser: listCourser[index]["title"],
@@ -99,10 +99,37 @@ class _HomePageState extends State<HomePage> {
                   scrollDirection: Axis
                       .horizontal, // Esto vuelve la lista para deslizar de forma lateral.
                   itemBuilder: (context, index) {
-                    // return Image.network(r[index]);
                     return CardCategories(
                       urlIcon: listCategory[index]["icon"],
                       titleCategories: listCategory[index]["title"],
+                    );
+                  }),
+            ),
+            SizedBox(height: ratioCalculator.calculateHeight(20.42),),
+            Container(
+              margin: EdgeInsets.only(left: ratioCalculator.calculateWidth(35)),
+              padding: EdgeInsets.only(
+                  bottom: ratioCalculator.calculateHeight(17.42)),
+              child: Text(
+                "Top Courses",
+                style: AppTextStyle.text16W500HomeTextStyle,
+              ),
+            ),
+            SizedBox(height: ratioCalculator.calculateHeight(5),),
+            Container(
+              margin:
+                  EdgeInsets.only(left: ratioCalculator.calculateWidth(25.38)),
+              height: 170,
+              child: ListView.builder(
+                  itemCount: listCourserDos.length,
+                  scrollDirection: Axis
+                      .horizontal, // Esto vuelve la lista para deslizar de forma lateral.
+                  itemBuilder: (context, index) {
+                    return CardCourse(
+                      urlImage: listCourserDos[index]["url_image"],
+                      titleCourser: listCourserDos[index]["title"],
+                      duration: listCourserDos[index]["duration"],
+                      favorite: listCourserDos[index]["is_favorite"],
                     );
                   }),
             ),
@@ -250,6 +277,7 @@ class _CardCategoriesState extends State<CardCategories> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         Card(
+          margin: EdgeInsets.only(right: ratioCalculator.calculateWidth(17.88)),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(31.92),
           ),
@@ -262,16 +290,28 @@ class _CardCategoriesState extends State<CardCategories> {
                 ),
                 width: ratioCalculator.calculateWidth(63.85),
                 height: ratioCalculator.calculateHeight(64.27),
+                child: 
+                 Icon(
+                  widget.urlIcon == "IT" ? Icons.computer : widget.urlIcon == "fitness" ? Icons.health_and_safety
+                  : widget.urlIcon == "office" ? Icons.pages : widget.urlIcon == "finance" ? Icons.home : Icons.access_alarm,
+                  color: widget.urlIcon == "IT" ? AppColors.title1CategoriesColor : widget.urlIcon == "fitness" ? AppColors.title2CategoriesColor
+                  : widget.urlIcon == "office" ? AppColors.title3CategoriesColor : widget.urlIcon == "finance" ? AppColors.title4CategoriesColor
+                  : widget.urlIcon == "finances" ? AppColors.title5CategoriesColor : AppColors.title1CategoriesColor,
+                  // Aqui le decimos que si un icono tiene un nombre de icono le ponga un color unico a cada icono.
+                ),
               ),
             ],
           ),
         ),
         Container(
+          margin: EdgeInsets.only(right: ratioCalculator.calculateWidth(17.88)),
           padding: EdgeInsets.only(top: ratioCalculator.calculateHeight(7.24)),
           child: Text(
             widget.titleCategories,
             textAlign: TextAlign.center,
-            style: AppTextStyle.text10W500HomeTextStyle,
+            style: widget.titleCategories == "IT and\nSoftware" ? AppTextStyle.textTitleCategories1 : widget.titleCategories == "Health and\nFitness" ? AppTextStyle.textTitleCategories2
+            : widget.titleCategories == "Office\nProductivity" ? AppTextStyle.textTitleCategories3 : widget.titleCategories == "Finance and\nAccounting" ? AppTextStyle.textTitleCategories4
+            : widget.titleCategories == "Programming\nand Code" ? AppTextStyle.textTitleCategories5 : AppTextStyle.textTitleCategories1,
           ),
         ),
       ],

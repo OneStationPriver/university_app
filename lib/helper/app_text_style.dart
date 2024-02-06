@@ -52,9 +52,31 @@ class AppTextStyle {
       fontSize: 16,
       fontWeight: FontWeight.w500,
       color: AppColors.textTitle2CardColor);
-  static const text10W500HomeTextStyle = TextStyle(
+  // Aqui los colores del titulo de los iconos de categoria
+  static const textTitleCategories1 = TextStyle(
       fontFamily: 'Poppins',
       fontSize: 10.22,
       fontWeight: FontWeight.w500,
-      color: AppColors.titleCategoriesColor);
+      color: AppColors.title1CategoriesColor);
+  static const textTitleCategories2 = TextStyle(
+      fontFamily: 'Poppins',
+      fontSize: 10.22,
+      fontWeight: FontWeight.w500,
+      color: AppColors.title2CategoriesColor);
+  static const textTitleCategories3 = TextStyle(
+      fontFamily: 'Poppins',
+      fontSize: 10.22,
+      fontWeight: FontWeight.w500,
+      color: AppColors.title3CategoriesColor);
+  static const textTitleCategories4 = TextStyle(
+      fontFamily: 'Poppins',
+      fontSize: 10.22,
+      fontWeight: FontWeight.w500,
+      color: AppColors.title4CategoriesColor);
+  static const textTitleCategories5 = TextStyle(
+      fontFamily: 'Poppins',
+      fontSize: 10.22,
+      fontWeight: FontWeight.w500,
+      color: AppColors.title5CategoriesColor);
+  // ---------------------------------------------------------
 }

@@ -34,28 +34,61 @@ const Map<String, dynamic> courser = {
 const Map<String, dynamic> category = {
   "categorys": [
     {
-      "icon": "nombre",
+      "icon": "IT",
       "title": "IT and\nSoftware",
     },
     {
-      "icon": "nombre",
+      "icon": "fitness",
       "title": "Health and\nFitness",
     },
     {
-      "icon": "nombre",
+      "icon": "office",
       "title": "Office\nProductivity",
     },
     {
-      "icon": "nombre",
+      "icon": "finance",
       "title": "Finance and\nAccounting",
     },
     {
-      "icon": "nombre",
+      "icon": "finances",
       "title": "Programming\nand Code",
     },
     {
-      "icon": "nombre",
+      "icon": "fitness",
       "title": "Photography\nClass",
     },
   ]
+};
+
+const Map<String, dynamic> courserDos = {
+  "coursersDos": [
+    {
+      "url_image":
+          "https://www.ingenioempresa.com/wp-content/uploads/2022/09/C-Language.png.webp",
+      "title": "Programming C++",
+      "duration": "1h, 15min",
+      "is_favorite": true
+    },
+    {
+      "url_image":
+          "https://i.pinimg.com/originals/64/f7/56/64f7560835f74f19bb60c5fb582db529.png",
+      "title": "Word Master",
+      "duration": "1h, 15min",
+      "is_favorite": true
+    },
+    {
+      "url_image":
+          "https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png",
+      "title": "Notion",
+      "duration": "1h, 15min",
+      "is_favorite": true
+    },
+    {
+      "url_image":
+          "https://damiandeluca.com.ar/wp-content/uploads/2018/04/visual-studio-code.png",
+      "title": "Visual Studio Code",
+      "duration": "1h, 15min",
+      "is_favorite": true
+    },
+  ],
 };
