@@ -3,6 +3,7 @@ import 'package:university_app/helper/app_colors.dart';
 import 'package:university_app/helper/app_text_style.dart';
 import 'package:university_app/helper/data_test/data_test.dart';
 import 'package:university_app/helper/ratio_calculator.dart';
+import 'package:university_app/models/coursers/coursers.dart';
 import 'package:university_app/pages/home_page.dart';
 import 'package:university_app/pages/item_page.dart';
 
@@ -41,7 +42,6 @@ class _PageState extends State<Page> {
 
   @override
   Widget build(BuildContext context) {
-    String t = courser["coursers"][0]["url_image"];
 
     return Scaffold(
       body: SafeArea(

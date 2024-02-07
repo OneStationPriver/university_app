@@ -1,8 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:university_app/helper/app_colors.dart';
 import 'package:university_app/helper/app_text_style.dart';
 import 'package:university_app/helper/data_test/data_test.dart';
 import 'package:university_app/helper/ratio_calculator.dart';
+import 'package:university_app/models/categorys/categorys.dart';
+import 'package:university_app/models/coursers/coursers.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,8 +20,13 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    List<Map<String, dynamic>> listCourser = courser["coursers"];
-    List<Map<String, dynamic>> listCategory = category["categorys"];
+    // primera card:
+    List<dynamic> listCourser = courser["coursers"]; 
+    List<Coursers> listCourserObject = listCourser.map((json) => Coursers.fromJson(json)).toList();
+    // segunda card:
+    List<dynamic> listCategory = category["categorys"];
+    List<Categorys> listCategoryObject = listCategory.map((json) => Categorys.fromJson(json)).toList();
+    // tercera card:
     List<Map<String, dynamic>> listCourserDos = courserDos["coursersDos"];
 
     return Scaffold(
@@ -65,15 +74,12 @@ class _HomePageState extends State<HomePage> {
                   EdgeInsets.only(left: ratioCalculator.calculateWidth(25.38)),
               height: 170,
               child: ListView.builder(
-                  itemCount: listCourser.length,
+                  itemCount: listCourserObject.length,
                   scrollDirection: Axis
                       .horizontal, // Esto vuelve la lista para deslizar de forma lateral.
                   itemBuilder: (context, index) {
                     return CardCourse(
-                      urlImage: listCourser[index]["url_image"],
-                      titleCourser: listCourser[index]["title"],
-                      duration: listCourser[index]["duration"],
-                      favorite: listCourser[index]["is_favorite"],
+                      coursers: listCourserObject[index]
                     );
                   }),
             ),
@@ -95,13 +101,12 @@ class _HomePageState extends State<HomePage> {
                   EdgeInsets.only(left: ratioCalculator.calculateWidth(25.54)),
               height: 102.15, // o utilizar 64.27
               child: ListView.builder(
-                  itemCount: listCategory.length,
+                  itemCount: listCategoryObject.length,
                   scrollDirection: Axis
                       .horizontal, // Esto vuelve la lista para deslizar de forma lateral.
                   itemBuilder: (context, index) {
                     return CardCategories(
-                      urlIcon: listCategory[index]["icon"],
-                      titleCategories: listCategory[index]["title"],
+                      categorys: listCategoryObject[index],
                     );
                   }),
             ),
@@ -121,15 +126,12 @@ class _HomePageState extends State<HomePage> {
                   EdgeInsets.only(left: ratioCalculator.calculateWidth(25.38)),
               height: 170,
               child: ListView.builder(
-                  itemCount: listCourserDos.length,
+                  itemCount: listCourserObject.length,
                   scrollDirection: Axis
                       .horizontal, // Esto vuelve la lista para deslizar de forma lateral.
                   itemBuilder: (context, index) {
                     return CardCourse(
-                      urlImage: listCourserDos[index]["url_image"],
-                      titleCourser: listCourserDos[index]["title"],
-                      duration: listCourserDos[index]["duration"],
-                      favorite: listCourserDos[index]["is_favorite"],
+                      coursers: listCourserObject[index],
                     );
                   }),
             ),
@@ -160,17 +162,10 @@ class _HomePageState extends State<HomePage> {
 
 // Clase para la Primera Card...
 class CardCourse extends StatefulWidget {
-  final String urlImage;
-  final String titleCourser;
-  final String duration;
-  final bool favorite;
-
+    final Coursers coursers;
+  
   const CardCourse(
-      {super.key,
-      required this.urlImage,
-      required this.titleCourser,
-      required this.duration,
-      required this.favorite});
+      {super.key, required this.coursers});
 
   @override
   State<CardCourse> createState() => _CardCourseState();
@@ -199,7 +194,7 @@ class _CardCourseState extends State<CardCourse> {
                 Container(
                   margin: EdgeInsets.all(16.92),
                   child: Image.network(
-                    widget.urlImage,
+                    widget.coursers.urlImage,
                     height: ratioCalculator.calculateHeight(81.23),
                     width: ratioCalculator.calculateHeight(135.38),
                   ),
@@ -224,14 +219,14 @@ class _CardCourseState extends State<CardCourse> {
                             width: ratioCalculator.calculateWidth(
                                 121), // Este es el width que marca cuanto ocupara el texto del overflow antes de aparecer los 3 puntos.
                             child: Text(
-                              widget.titleCourser,
+                              widget.coursers.title,
                               overflow: TextOverflow
                                   .ellipsis, // Con el overflow le decimos que si el texto es mayor al width de el container donde esta que lo marque con 3 puntos.
                               style: AppTextStyle.text13W500TextStyle,
                             ),
                           ),
                           Text(
-                            widget.duration,
+                            widget.coursers.duration,
                             style: AppTextStyle.text10W400TextStyle,
                           ),
                         ],
@@ -256,13 +251,11 @@ class _CardCourseState extends State<CardCourse> {
 
 // Clase para el Segundo Card...
 class CardCategories extends StatefulWidget {
-  final String urlIcon;
-  final String titleCategories;
+  final Categorys categorys;
 
   const CardCategories({
     super.key,
-    required this.urlIcon,
-    required this.titleCategories,
+    required this.categorys,
   });
 
   @override
@@ -292,11 +285,11 @@ class _CardCategoriesState extends State<CardCategories> {
                 height: ratioCalculator.calculateHeight(64.27),
                 child: 
                  Icon(
-                  widget.urlIcon == "IT" ? Icons.computer : widget.urlIcon == "fitness" ? Icons.health_and_safety
-                  : widget.urlIcon == "office" ? Icons.pages : widget.urlIcon == "finance" ? Icons.home : Icons.access_alarm,
-                  color: widget.urlIcon == "IT" ? AppColors.title1CategoriesColor : widget.urlIcon == "fitness" ? AppColors.title2CategoriesColor
-                  : widget.urlIcon == "office" ? AppColors.title3CategoriesColor : widget.urlIcon == "finance" ? AppColors.title4CategoriesColor
-                  : widget.urlIcon == "finances" ? AppColors.title5CategoriesColor : AppColors.title1CategoriesColor,
+                  widget.categorys.icon == "IT" ? Icons.computer : widget.categorys.icon == "fitness" ? Icons.health_and_safety
+                  : widget.categorys.icon == "office" ? Icons.pages : widget.categorys.icon == "finance" ? Icons.home : Icons.access_alarm,
+                  color: widget.categorys.icon == "IT" ? AppColors.title1CategoriesColor : widget.categorys.icon == "fitness" ? AppColors.title2CategoriesColor
+                  : widget.categorys.icon == "office" ? AppColors.title3CategoriesColor : widget.categorys.icon == "finance" ? AppColors.title4CategoriesColor
+                  : widget.categorys.icon == "finances" ? AppColors.title5CategoriesColor : AppColors.title1CategoriesColor,
                   // Aqui le decimos que si un icono tiene un nombre de icono le ponga un color unico a cada icono.
                 ),
               ),
@@ -307,11 +300,11 @@ class _CardCategoriesState extends State<CardCategories> {
           margin: EdgeInsets.only(right: ratioCalculator.calculateWidth(17.88)),
           padding: EdgeInsets.only(top: ratioCalculator.calculateHeight(7.24)),
           child: Text(
-            widget.titleCategories,
+            widget.categorys.title,
             textAlign: TextAlign.center,
-            style: widget.titleCategories == "IT and\nSoftware" ? AppTextStyle.textTitleCategories1 : widget.titleCategories == "Health and\nFitness" ? AppTextStyle.textTitleCategories2
-            : widget.titleCategories == "Office\nProductivity" ? AppTextStyle.textTitleCategories3 : widget.titleCategories == "Finance and\nAccounting" ? AppTextStyle.textTitleCategories4
-            : widget.titleCategories == "Programming\nand Code" ? AppTextStyle.textTitleCategories5 : AppTextStyle.textTitleCategories1,
+            style: widget.categorys.title == "IT and\nSoftware" ? AppTextStyle.textTitleCategories1 : widget.categorys.title == "Health and\nFitness" ? AppTextStyle.textTitleCategories2
+            : widget.categorys.title == "Office\nProductivity" ? AppTextStyle.textTitleCategories3 : widget.categorys.title == "Finance and\nAccounting" ? AppTextStyle.textTitleCategories4
+            : widget.categorys.title == "Programming\nand Code" ? AppTextStyle.textTitleCategories5 : AppTextStyle.textTitleCategories1,
           ),
         ),
       ],
