@@ -28,6 +28,7 @@ class _HomePageState extends State<HomePage> {
     List<Categorys> listCategoryObject = listCategory.map((json) => Categorys.fromJson(json)).toList();
     // tercera card:
     List<Map<String, dynamic>> listCourserDos = courserDos["coursersDos"];
+    List<Coursers> listCourser2Object = listCourserDos.map((json) => Coursers.fromJson(json)).toList();
 
     return Scaffold(
       body: SafeArea(
@@ -126,12 +127,12 @@ class _HomePageState extends State<HomePage> {
                   EdgeInsets.only(left: ratioCalculator.calculateWidth(25.38)),
               height: 170,
               child: ListView.builder(
-                  itemCount: listCourserObject.length,
+                  itemCount: listCourser2Object.length,
                   scrollDirection: Axis
                       .horizontal, // Esto vuelve la lista para deslizar de forma lateral.
                   itemBuilder: (context, index) {
                     return CardCourse(
-                      coursers: listCourserObject[index],
+                      coursers: listCourser2Object[index],
                     );
                   }),
             ),
