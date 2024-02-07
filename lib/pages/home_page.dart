@@ -8,6 +8,8 @@ import 'package:university_app/helper/ratio_calculator.dart';
 import 'package:university_app/models/categorys/categorys.dart';
 import 'package:university_app/models/coursers/coursers.dart';
 
+import "package:persistent_bottom_nav_bar/persistent_tab_view.dart";
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -21,14 +23,17 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     // primera card:
-    List<dynamic> listCourser = courser["coursers"]; 
-    List<Coursers> listCourserObject = listCourser.map((json) => Coursers.fromJson(json)).toList();
+    List<dynamic> listCourser = courser["coursers"];
+    List<Coursers> listCourserObject =
+        listCourser.map((json) => Coursers.fromJson(json)).toList();
     // segunda card:
     List<dynamic> listCategory = category["categorys"];
-    List<Categorys> listCategoryObject = listCategory.map((json) => Categorys.fromJson(json)).toList();
+    List<Categorys> listCategoryObject =
+        listCategory.map((json) => Categorys.fromJson(json)).toList();
     // tercera card:
     List<Map<String, dynamic>> listCourserDos = courserDos["coursersDos"];
-    List<Coursers> listCourser2Object = listCourserDos.map((json) => Coursers.fromJson(json)).toList();
+    List<Coursers> listCourser2Object =
+        listCourserDos.map((json) => Coursers.fromJson(json)).toList();
 
     return Scaffold(
       body: SafeArea(
@@ -79,9 +84,7 @@ class _HomePageState extends State<HomePage> {
                   scrollDirection: Axis
                       .horizontal, // Esto vuelve la lista para deslizar de forma lateral.
                   itemBuilder: (context, index) {
-                    return CardCourse(
-                      coursers: listCourserObject[index]
-                    );
+                    return CardCourse(coursers: listCourserObject[index]);
                   }),
             ),
             SizedBox(
@@ -111,7 +114,9 @@ class _HomePageState extends State<HomePage> {
                     );
                   }),
             ),
-            SizedBox(height: ratioCalculator.calculateHeight(20.42),),
+            SizedBox(
+              height: ratioCalculator.calculateHeight(20.42),
+            ),
             Container(
               margin: EdgeInsets.only(left: ratioCalculator.calculateWidth(35)),
               padding: EdgeInsets.only(
@@ -121,7 +126,9 @@ class _HomePageState extends State<HomePage> {
                 style: AppTextStyle.text16W500HomeTextStyle,
               ),
             ),
-            SizedBox(height: ratioCalculator.calculateHeight(5),),
+            SizedBox(
+              height: ratioCalculator.calculateHeight(5),
+            ),
             Container(
               margin:
                   EdgeInsets.only(left: ratioCalculator.calculateWidth(25.38)),
@@ -139,34 +146,15 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0,
-        //fixedColor: Colors.purple,
-        showUnselectedLabels:
-            true, // Con esto se muestra el texto de los iconos de lo contrario no se veran.
-        selectedItemColor: Color.fromRGBO(123, 97, 255, 1),
-        backgroundColor: Color.fromRGBO(0, 0, 0, 0.02),
-        unselectedItemColor: Colors.grey,
-        unselectedLabelStyle: TextStyle(color: Colors.grey),
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
-          BottomNavigationBarItem(icon: Icon(Icons.pages), label: "Exams"),
-          BottomNavigationBarItem(icon: Icon(Icons.save), label: "Wishits"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.account_balance), label: "Acounts"),
-        ],
-      ),
     );
   }
 }
 
 // Clase para la Primera Card...
 class CardCourse extends StatefulWidget {
-    final Coursers coursers;
-  
-  const CardCourse(
-      {super.key, required this.coursers});
+  final Coursers coursers;
+
+  const CardCourse({super.key, required this.coursers});
 
   @override
   State<CardCourse> createState() => _CardCourseState();
@@ -284,13 +272,27 @@ class _CardCategoriesState extends State<CardCategories> {
                 ),
                 width: ratioCalculator.calculateWidth(63.85),
                 height: ratioCalculator.calculateHeight(64.27),
-                child: 
-                 Icon(
-                  widget.categorys.icon == "IT" ? Icons.computer : widget.categorys.icon == "fitness" ? Icons.health_and_safety
-                  : widget.categorys.icon == "office" ? Icons.pages : widget.categorys.icon == "finance" ? Icons.home : Icons.access_alarm,
-                  color: widget.categorys.icon == "IT" ? AppColors.title1CategoriesColor : widget.categorys.icon == "fitness" ? AppColors.title2CategoriesColor
-                  : widget.categorys.icon == "office" ? AppColors.title3CategoriesColor : widget.categorys.icon == "finance" ? AppColors.title4CategoriesColor
-                  : widget.categorys.icon == "finances" ? AppColors.title5CategoriesColor : AppColors.title1CategoriesColor,
+                child: Icon(
+                  widget.categorys.icon == "IT"
+                      ? Icons.computer
+                      : widget.categorys.icon == "fitness"
+                          ? Icons.health_and_safety
+                          : widget.categorys.icon == "office"
+                              ? Icons.pages
+                              : widget.categorys.icon == "finance"
+                                  ? Icons.home
+                                  : Icons.access_alarm,
+                  color: widget.categorys.icon == "IT"
+                      ? AppColors.title1CategoriesColor
+                      : widget.categorys.icon == "fitness"
+                          ? AppColors.title2CategoriesColor
+                          : widget.categorys.icon == "office"
+                              ? AppColors.title3CategoriesColor
+                              : widget.categorys.icon == "finance"
+                                  ? AppColors.title4CategoriesColor
+                                  : widget.categorys.icon == "finances"
+                                      ? AppColors.title5CategoriesColor
+                                      : AppColors.title1CategoriesColor,
                   // Aqui le decimos que si un icono tiene un nombre de icono le ponga un color unico a cada icono.
                 ),
               ),
@@ -303,9 +305,19 @@ class _CardCategoriesState extends State<CardCategories> {
           child: Text(
             widget.categorys.title,
             textAlign: TextAlign.center,
-            style: widget.categorys.title == "IT and\nSoftware" ? AppTextStyle.textTitleCategories1 : widget.categorys.title == "Health and\nFitness" ? AppTextStyle.textTitleCategories2
-            : widget.categorys.title == "Office\nProductivity" ? AppTextStyle.textTitleCategories3 : widget.categorys.title == "Finance and\nAccounting" ? AppTextStyle.textTitleCategories4
-            : widget.categorys.title == "Programming\nand Code" ? AppTextStyle.textTitleCategories5 : AppTextStyle.textTitleCategories1,
+            style: widget.categorys.title == "IT and\nSoftware"
+                ? AppTextStyle.textTitleCategories1
+                : widget.categorys.title == "Health and\nFitness"
+                    ? AppTextStyle.textTitleCategories2
+                    : widget.categorys.title == "Office\nProductivity"
+                        ? AppTextStyle.textTitleCategories3
+                        : widget.categorys.title == "Finance and\nAccounting"
+                            ? AppTextStyle.textTitleCategories4
+                            : widget.categorys.title == "Programming\nand Code"
+                                ? AppTextStyle.textTitleCategories5
+                                : widget.categorys.title == "Photography\nClass"
+                                    ? AppTextStyle.textTitleCategories2
+                                    : AppTextStyle.textTitleCategories1,
           ),
         ),
       ],
