@@ -60,6 +60,13 @@ class _ItemPageState extends State<ItemPage> {
             ),
             widget.isBody
                 ? Container(
+                  padding: EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.black,
+                        width: 2,
+                      )
+                    ),
                     height: ratioCalculator.calculateHeight(155),
                     margin: EdgeInsets.only(
                         left: ratioCalculator.calculateWidth(44),

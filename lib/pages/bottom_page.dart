@@ -55,7 +55,7 @@ class _BottomPageState extends State<BottomPage> {
       SearchPage(),
       ExamnsPage(),
       WhishlistPage(),
-      SecondPage()
+      SecondPage(),
     ];
   }
 

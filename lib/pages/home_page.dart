@@ -84,7 +84,9 @@ class _HomePageState extends State<HomePage> {
                   scrollDirection: Axis
                       .horizontal, // Esto vuelve la lista para deslizar de forma lateral.
                   itemBuilder: (context, index) {
-                    return CardCourse(coursers: listCourserObject[index]);
+                    return CardCourse(
+                      coursers: listCourserObject[index],
+                    );
                   }),
             ),
             SizedBox(
@@ -162,6 +164,7 @@ class CardCourse extends StatefulWidget {
 
 class _CardCourseState extends State<CardCourse> {
   final RatioCalculator ratioCalculator = RatioCalculator();
+
   @override
   Widget build(BuildContext context) {
     return Column(
