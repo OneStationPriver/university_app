@@ -51,7 +51,7 @@ class AppTextStyle {
       fontFamily: 'Poppins',
       fontSize: 16,
       fontWeight: FontWeight.w500,
-      color: AppColors.textTitle2CardColor);
+      color: AppColors.textTitleCardColor);
   // Aqui los colores del titulo de los iconos de categoria
   static const textTitleCategories1 = TextStyle(
       fontFamily: 'Poppins',
@@ -79,4 +79,19 @@ class AppTextStyle {
       fontWeight: FontWeight.w500,
       color: AppColors.title5CategoriesColor);
   // ---------------------------------------------------------
+  static const text20W500TextStyle = TextStyle(
+      fontFamily: 'Poppins',
+      fontSize: 20,
+      fontWeight: FontWeight.w500,
+      color: AppColors.textTitleHome2Color);
+  static const text12W400CardWishlist = TextStyle(
+      fontFamily: 'Poppins',
+      fontSize: 12,
+      fontWeight: FontWeight.w400,
+      color: AppColors.textTitleHome2Color);
+  static const text14W400TextStyle = TextStyle(
+      fontFamily: 'Poppins',
+      fontSize: 14,
+      fontWeight: FontWeight.w400,
+      color: AppColors.fondoCardWishlistColor);
 }

@@ -51,7 +51,7 @@ class _PageState extends State<Page> {
             Container(
               height: ratioCalculator.calculateHeight(708),
               child: PageView(
-                physics: BouncingScrollPhysics(),
+                physics: BouncingScrollPhysics(), // Genera un efecto de rebote al llegar al final de la lista.
                 children: <Widget>[
                   ItemPage(
                     title: "Welcome",

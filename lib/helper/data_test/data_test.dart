@@ -92,3 +92,36 @@ const Map<String, dynamic> courserDos = {
     },
   ],
 };
+
+const Map<String, dynamic> wishlist = {
+  "wishlists": [
+    {
+      "url_image":
+          "https://s3-alpha-sig.figma.com/img/e423/f37c/7bbf3e7ca74b4e535c48dcadf968097b?Expires=1708300800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=n3GLQtpNmCQh3w-7xZOU-9eWKrjSCbMBdb3Qzmn5JyHa6inKTMua9ijpNEagUs4LBgbT5pkKKPuUm4HbMty6qYbMQ2LFjaEa~Gd50r-Npq4ALB2SZ9Vo4CarwXejkndVbzuh37n0OGmTZr7xOGLrZ7bBlRGcihGqy3TI27hBCBd-fa8ae0-cIPZaajqXJNfR61R~w-TgYkxYKX~lDytgI2GLHGwEYeAe8WjErEq3CCuritaTl00HnqGC1zCzXtFmXX4IG4hdH~BLOWh~ChAAMx0QcDMcBb7h2gAWEquIQ3G2SJp15K82yAUGvRuWa3lvN1-lMvzUq41-~pFibJfmmA__",
+      "title": "React JS",
+      "question_number": "10 question",
+      "time": "25min, remaining",
+    },
+    {
+      "url_image":
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/800px-Python-logo-notext.svg.png",
+      "title": "Python",
+      "question_number": "15 question",
+      "time": "32min, remaining",
+    },
+    {
+      "url_image":
+          "https://s3-alpha-sig.figma.com/img/d336/e357/d2380418d6d76503dcf0ecb5ca7efc3a?Expires=1708300800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=oC7ngAIFvBkdFlTsPiQocaKLAodMQvqW9CzW-Ni-Rj2Bxb8vB20jPf4nAZy5gQx7QcsknkMb0ETcvxg8QbrMeD8nozhIBxji-aknU5p6ohBBglg0LkgganO~fOkMgCbyHc6ZbQgQxY~zWcahyKwEHt9DKijmP7datF14WOMWTPv-r7eDKYTIcaFwh04X~AaWLA0nGaKbUKFH3QSuWV1CcbqqXIJLVWzK68IVwkMS4SDzjlnG8F635kAZ6HZGVQRK-0Fk9OsXGKwDcxHllvFh9kbU9Vxclug9OozPAFwv4qsbgyFotwYvqcdXQ86Rx9M8GkXnFFwNdTenDjMjnOMD2g__",
+      "title": "Java",
+      "question_number": "20 question",
+      "time": "40min, remaining",
+    },
+    {
+      "url_image":
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Google-flutter-logo.svg/2560px-Google-flutter-logo.svg.png",
+      "title": "Flutter",
+      "question_number": "21 question",
+      "time": "43min, remaining",
+    },
+  ],
+};

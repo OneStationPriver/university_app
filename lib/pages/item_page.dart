@@ -63,7 +63,7 @@ class _ItemPageState extends State<ItemPage> {
                   padding: EdgeInsets.all(5),
                     decoration: BoxDecoration(
                       border: Border.all(
-                        color: Colors.black,
+                        color: Colors.purple,
                         width: 2,
                       )
                     ),
