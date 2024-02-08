@@ -28,7 +28,6 @@ mixin _$Accounts {
   @JsonKey(name: "phone_number")
   String get phoneNumber => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  String get title => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,8 +45,7 @@ abstract class $AccountsCopyWith<$Res> {
       @JsonKey(name: "education_level") String educationLevel,
       String address,
       @JsonKey(name: "phone_number") String phoneNumber,
-      String email,
-      String title});
+      String email});
 }
 
 /// @nodoc
@@ -68,7 +66,6 @@ class _$AccountsCopyWithImpl<$Res, $Val extends Accounts>
     Object? address = null,
     Object? phoneNumber = null,
     Object? email = null,
-    Object? title = null,
   }) {
     return _then(_value.copyWith(
       yourName: null == yourName
@@ -91,10 +88,6 @@ class _$AccountsCopyWithImpl<$Res, $Val extends Accounts>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
     ) as $Val);
   }
 }
@@ -112,8 +105,7 @@ abstract class _$$AccountsImplCopyWith<$Res>
       @JsonKey(name: "education_level") String educationLevel,
       String address,
       @JsonKey(name: "phone_number") String phoneNumber,
-      String email,
-      String title});
+      String email});
 }
 
 /// @nodoc
@@ -132,7 +124,6 @@ class __$$AccountsImplCopyWithImpl<$Res>
     Object? address = null,
     Object? phoneNumber = null,
     Object? email = null,
-    Object? title = null,
   }) {
     return _then(_$AccountsImpl(
       yourName: null == yourName
@@ -155,10 +146,6 @@ class __$$AccountsImplCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -171,8 +158,7 @@ class _$AccountsImpl extends _Accounts {
       @JsonKey(name: "education_level") required this.educationLevel,
       required this.address,
       @JsonKey(name: "phone_number") required this.phoneNumber,
-      required this.email,
-      required this.title})
+      required this.email})
       : super._();
 
   factory _$AccountsImpl.fromJson(Map<String, dynamic> json) =>
@@ -191,12 +177,10 @@ class _$AccountsImpl extends _Accounts {
   final String phoneNumber;
   @override
   final String email;
-  @override
-  final String title;
 
   @override
   String toString() {
-    return 'Accounts(yourName: $yourName, educationLevel: $educationLevel, address: $address, phoneNumber: $phoneNumber, email: $email, title: $title)';
+    return 'Accounts(yourName: $yourName, educationLevel: $educationLevel, address: $address, phoneNumber: $phoneNumber, email: $email)';
   }
 
   @override
@@ -211,14 +195,13 @@ class _$AccountsImpl extends _Accounts {
             (identical(other.address, address) || other.address == address) &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.title, title) || other.title == title));
+            (identical(other.email, email) || other.email == email));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, yourName, educationLevel,
-      address, phoneNumber, email, title);
+  int get hashCode => Object.hash(
+      runtimeType, yourName, educationLevel, address, phoneNumber, email);
 
   @JsonKey(ignore: true)
   @override
@@ -240,8 +223,7 @@ abstract class _Accounts extends Accounts {
       @JsonKey(name: "education_level") required final String educationLevel,
       required final String address,
       @JsonKey(name: "phone_number") required final String phoneNumber,
-      required final String email,
-      required final String title}) = _$AccountsImpl;
+      required final String email}) = _$AccountsImpl;
   _Accounts._() : super._();
 
   factory _Accounts.fromJson(Map<String, dynamic> json) =
@@ -260,8 +242,6 @@ abstract class _Accounts extends Accounts {
   String get phoneNumber;
   @override
   String get email;
-  @override
-  String get title;
   @override
   @JsonKey(ignore: true)
   _$$AccountsImplCopyWith<_$AccountsImpl> get copyWith =>

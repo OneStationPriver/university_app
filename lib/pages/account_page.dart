@@ -106,46 +106,57 @@ class _CardAccountState extends State<CardAccount> {
   final RatioCalculator ratioCalculator = RatioCalculator();
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          width: ratioCalculator.calculateWidth(340.08),
-          height: ratioCalculator.calculateHeight(228.04),
-          decoration: BoxDecoration(
-            boxShadow: [
-              // debe ir en lista
-              BoxShadow(
-                // para dar sombra a el contenedor
-                color: Color.fromRGBO(0, 0, 0, 0.02), // color de la sombra
-                spreadRadius: 5.0, // Difuminación de la sombra
-                blurRadius: 7.0, // Radio de la sombra
-                offset: Offset(0.0, 2.0), // Desplazamiento de la sombra
-              )
-            ],
-            borderRadius: BorderRadius.circular(8),
-            color: AppColors.fondoCardWishlistColor,
+    return Card(
+      child: Column(
+        children: [
+          Container(
+            width: ratioCalculator.calculateWidth(340.08),
+            height: ratioCalculator.calculateHeight(228.04),
+            decoration: BoxDecoration(
+              boxShadow: [
+                // debe ir en lista
+                BoxShadow(
+                  // para dar sombra a el contenedor
+                  color: Color.fromRGBO(0, 0, 0, 0.02), // color de la sombra
+                  spreadRadius: 5.0, // Difuminación de la sombra
+                  blurRadius: 7.0, // Radio de la sombra
+                  offset: Offset(0.0, 2.0), // Desplazamiento de la sombra
+                )
+              ],
+              borderRadius: BorderRadius.circular(8),
+              color: AppColors.fondoCardWishlistColor,
+            ),
+            child: Row(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                        margin: EdgeInsets.only(
+                          left: ratioCalculator.calculateWidth(16),
+                          top: ratioCalculator.calculateHeight(12),
+                        ),
+                        child: Text(
+                          "Personal Info",
+                          style: AppTextStyle.text16W800TextStyle,
+                        )),
+                    Text("Your name"),
+                    Text("Education Level"),
+                    Text("Address"),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Text(widget.accounts.yourName),
+                    Text(widget.accounts.educationLevel),
+                    Text(widget.accounts.address),
+                  ],
+                )
+              ],
+            ),
           ),
-          child: Row(
-            children: [
-              Column(
-                children: <Widget>[
-                  Text("Personal Info"),
-                  Text("Your name"),
-                  Text("Education Level"),
-                  Text("Address"),
-                ],
-              ),
-              Column(
-                children: [
-                  Text(widget.accounts.yourName),
-                  Text(widget.accounts.educationLevel),
-                  Text(widget.accounts.address),
-                ],
-              )
-            ],
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

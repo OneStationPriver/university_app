@@ -9,12 +9,12 @@ class AppTextStyle {
       color: AppColors.textTitleColor);
   static const text16W400TextStyle = TextStyle(
       fontFamily: 'Poppins',
-      fontSize: 16,
+      fontSize: 14,
       fontWeight: FontWeight.w400,
       color: AppColors.textColor);
   static const text16W600TextStyle = TextStyle(
       fontFamily: 'Poppins',
-      fontSize: 16,
+      fontSize: 14,
       fontWeight: FontWeight.w600,
       color: AppColors.textUnderlinedColor);
   static const text16W500TextStyle = TextStyle(
@@ -94,4 +94,9 @@ class AppTextStyle {
       fontSize: 14,
       fontWeight: FontWeight.w400,
       color: AppColors.fondoCardWishlistColor);
+  static const text16W800TextStyle = TextStyle(
+      fontFamily: 'Manrope',
+      fontSize: 16.64,
+      fontWeight: FontWeight.w800,
+      color: AppColors.title1CategoriesColor);
 }

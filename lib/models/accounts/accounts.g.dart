@@ -13,7 +13,6 @@ _$AccountsImpl _$$AccountsImplFromJson(Map<String, dynamic> json) =>
       address: json['address'] as String,
       phoneNumber: json['phone_number'] as String,
       email: json['email'] as String,
-      title: json['title'] as String,
     );
 
 Map<String, dynamic> _$$AccountsImplToJson(_$AccountsImpl instance) =>
@@ -23,5 +22,4 @@ Map<String, dynamic> _$$AccountsImplToJson(_$AccountsImpl instance) =>
       'address': instance.address,
       'phone_number': instance.phoneNumber,
       'email': instance.email,
-      'title': instance.title,
     };

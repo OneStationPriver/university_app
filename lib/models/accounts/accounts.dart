@@ -15,7 +15,6 @@ class Accounts with _$Accounts {
     required String phoneNumber,
     required String email,
 
-    required String title,
   }) = _Accounts;
 
   const Accounts._();
