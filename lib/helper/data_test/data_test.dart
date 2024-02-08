@@ -132,3 +132,15 @@ const Map<String, dynamic> wishlist = {
     },
   ],
 };
+
+const Map<String, dynamic> account = {
+  "accounts": [
+    {
+      "your_name": "Bibhushan Saakha",
+      "education_level": "Bachelors",
+      "address": "Koteshwor, Kathmandu",
+      "phone_number": "+977 9840103828",
+      "email": "bibhushansaakha@gmail.com",
+    },
+  ]
+};

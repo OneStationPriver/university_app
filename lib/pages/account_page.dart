@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:university_app/helper/app_colors.dart';
 import 'package:university_app/helper/app_text_style.dart';
+import 'package:university_app/helper/data_test/data_test.dart';
 import 'package:university_app/helper/ratio_calculator.dart';
+import 'package:university_app/models/accounts/accounts.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({super.key});
@@ -12,8 +14,13 @@ class AccountPage extends StatefulWidget {
 
 class _AccountPageState extends State<AccountPage> {
   final RatioCalculator ratioCalculator = RatioCalculator();
+
   @override
   Widget build(BuildContext context) {
+    List<dynamic> listAccount = account["accounts"];
+    List<Accounts> listAccountObject =
+        listAccount.map((json) => Accounts.fromJson(json)).toList();
+
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -68,24 +75,77 @@ class _AccountPageState extends State<AccountPage> {
               ),
             ),
             Container(
-              width: ratioCalculator.calculateWidth(340.08),
-              height: ratioCalculator.calculateHeight(228.04),
-              decoration: BoxDecoration(
-                boxShadow: [ // debe ir en lista
-                  BoxShadow( // para dar sombra a el contenedor 
-                    color: Color.fromRGBO(0, 0, 0, 0.02), // color de la sombra
-                    spreadRadius: 5.0, // Difuminación de la sombra
-                    blurRadius: 7.0, // Radio de la sombra
-                    offset: Offset(0.0, 2.0), // Desplazamiento de la sombra
-                  )
-                ],
-                borderRadius: BorderRadius.circular(8),
-                color: AppColors.fondoCardWishlistColor,
+              margin: EdgeInsets.only(
+                left: ratioCalculator.calculateWidth(25),
+                right: ratioCalculator.calculateWidth(24.92),
               ),
+              height: 500,
+              child: ListView.builder(
+                  itemCount: listAccountObject.length,
+                  itemBuilder: (context, index) {
+                    return CardAccount(accounts: listAccountObject[index]);
+                  }),
             ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class CardAccount extends StatefulWidget {
+  final Accounts accounts;
+
+  const CardAccount({super.key, required this.accounts});
+
+  @override
+  State<CardAccount> createState() => _CardAccountState();
+}
+
+class _CardAccountState extends State<CardAccount> {
+  final RatioCalculator ratioCalculator = RatioCalculator();
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          width: ratioCalculator.calculateWidth(340.08),
+          height: ratioCalculator.calculateHeight(228.04),
+          decoration: BoxDecoration(
+            boxShadow: [
+              // debe ir en lista
+              BoxShadow(
+                // para dar sombra a el contenedor
+                color: Color.fromRGBO(0, 0, 0, 0.02), // color de la sombra
+                spreadRadius: 5.0, // Difuminación de la sombra
+                blurRadius: 7.0, // Radio de la sombra
+                offset: Offset(0.0, 2.0), // Desplazamiento de la sombra
+              )
+            ],
+            borderRadius: BorderRadius.circular(8),
+            color: AppColors.fondoCardWishlistColor,
+          ),
+          child: Row(
+            children: [
+              Column(
+                children: <Widget>[
+                  Text("Personal Info"),
+                  Text("Your name"),
+                  Text("Education Level"),
+                  Text("Address"),
+                ],
+              ),
+              Column(
+                children: [
+                  Text(widget.accounts.yourName),
+                  Text(widget.accounts.educationLevel),
+                  Text(widget.accounts.address),
+                ],
+              )
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
