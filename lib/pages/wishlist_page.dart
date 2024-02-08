@@ -40,15 +40,12 @@ class _WhishlistPageState extends State<WhishlistPage> {
             Container(
               margin: EdgeInsets.only(
                 left: ratioCalculator.calculateWidth(25.38),
-                // right: ratioCalculator.calculateWidth(33.62),
               ),
               height: 550,
               child: ListView.builder(
                   itemCount: listWishlistObject.length,
                   itemBuilder: (context, index) {
-                    return CardWishlist(
-                      wishlists: listWishlistObject[index],
-                    );
+                    return CardWishlist(wishlists: listWishlistObject[index]);
                   }),
             ),
           ],
@@ -105,7 +102,7 @@ class _CardWishlistState extends State<CardWishlist> {
                   padding: EdgeInsets.only(
                       top: ratioCalculator.calculateHeight(14),
                       left: ratioCalculator.calculateWidth(16),
-                      right: ratioCalculator.calculateWidth(77)),
+                      right: ratioCalculator.calculateWidth(33.20)),
                   width: ratioCalculator.calculateWidth(200),
                   height: ratioCalculator.calculateHeight(145),
                   child: Column(
@@ -132,15 +129,16 @@ class _CardWishlistState extends State<CardWishlist> {
                           ),
                         ],
                       ),
+                      SizedBox(
+                        height: ratioCalculator.calculateHeight(8),
+                      ),
                       ButtonBar(
+                        buttonPadding:
+                            EdgeInsets.only(left: 5), // Padding del boton
                         children: [
                           Container(
                             height: ratioCalculator.calculateHeight(35),
                             width: ratioCalculator.calculateWidth(161),
-                            // margin: EdgeInsets.only(
-                            //   left: ratioCalculator.calculateWidth(16),
-                            //   right: ratioCalculator.calculateWidth(20),
-                            // ),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8.56),
                               color: AppColors.containerButtonColor,

@@ -4,7 +4,7 @@ import 'package:university_app/helper/app_colors.dart';
 import 'package:university_app/pages/examns_page.dart';
 import 'package:university_app/pages/home_page.dart';
 import 'package:university_app/pages/search_page.dart';
-import 'package:university_app/pages/second_page.dart';
+import 'package:university_app/pages/account_page.dart';
 import 'package:university_app/pages/wishlist_page.dart';
 
 class BottomPage extends StatefulWidget {
@@ -55,7 +55,7 @@ class _BottomPageState extends State<BottomPage> {
       SearchPage(),
       ExamnsPage(),
       WhishlistPage(),
-      SecondPage(),
+      AccountPage(),
     ];
   }
 

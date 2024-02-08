@@ -123,5 +123,12 @@ const Map<String, dynamic> wishlist = {
       "question_number": "21 question",
       "time": "43min, remaining",
     },
+    {
+      "url_image":
+          "https://www.ingenioempresa.com/wp-content/uploads/2022/09/C-Language.png.webp",
+      "title": "C++",
+      "question_number": "24 question",
+      "time": "48min, remaining",
+    },
   ],
 };
