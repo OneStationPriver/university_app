@@ -132,26 +132,80 @@ class _CardAccountState extends State<CardAccount> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Container(
-                        margin: EdgeInsets.only(
+                      margin: EdgeInsets.only(
                           left: ratioCalculator.calculateWidth(16),
                           top: ratioCalculator.calculateHeight(12),
+                          bottom: ratioCalculator.calculateHeight(38.92)),
+                      child: Text(
+                        "Personal Info",
+                        style: AppTextStyle.text16W800TextStyle,
+                      ),
+                    ),
+                    Column(
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(
+                                left: ratioCalculator.calculateWidth(32.64),
+                                bottom: ratioCalculator.calculateHeight(25),
+                              ),
+                              child: Text("Your name"),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(
+                                    bottom: ratioCalculator.calculateHeight(25),
+                                  ),
+                                  child: Text(widget.accounts.yourName),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
-                        child: Text(
-                          "Personal Info",
-                          style: AppTextStyle.text16W800TextStyle,
-                        )),
-                    Text("Your name"),
-                    Text("Education Level"),
-                    Text("Address"),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(
+                            left: ratioCalculator.calculateWidth(32.64),
+                            bottom: ratioCalculator.calculateHeight(25),
+                          ),
+                          child: Text("Education Level"),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(
+                            bottom: ratioCalculator.calculateHeight(25),
+                          ),
+                          child: Text(widget.accounts.educationLevel),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(
+                            left: ratioCalculator.calculateWidth(32.64),
+                          ),
+                          child: Text("Address"),
+                        ),
+                        Container(
+                          child: Text(widget.accounts.address),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
-                Column(
-                  children: [
-                    Text(widget.accounts.yourName),
-                    Text(widget.accounts.educationLevel),
-                    Text(widget.accounts.address),
-                  ],
-                )
+                // Column(
+                //   children: [
+                //     Text(widget.accounts.yourName),
+                //     Text(widget.accounts.educationLevel),
+                //     Text(widget.accounts.address),
+                //   ],
+                // )
               ],
             ),
           ),

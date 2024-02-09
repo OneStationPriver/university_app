@@ -123,13 +123,14 @@ class _CardWishlistState extends State<CardWishlist> {
                               ),
                               Spacer(),
                               SizedBox(
-                                width: 30,
-                                height: 30,
+                                // con esto se regula la onda expansiva que aparece al tocar el boton(efecto).
+                                width: ratioCalculator.calculateWidth(30),
+                                height: ratioCalculator.calculateHeight(30),
                                 child: IconButton(
                                   splashRadius: 50,
                                   // constraints: BoxConstraints(maxHeight: 36),
                                   padding: EdgeInsets.all(0.5),
-                                  onPressed: (){},
+                                  onPressed: () {},
                                   icon: Icon(
                                     Icons.delete_forever,
                                     color: AppColors.iconCardWishlistColor,
