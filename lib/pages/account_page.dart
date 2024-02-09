@@ -17,11 +17,10 @@ class _AccountPageState extends State<AccountPage> {
 
   @override
   Widget build(BuildContext context) {
-    List<dynamic> listAccount = account["accounts"];
-    List<Accounts> listAccountObject =
-        listAccount.map((json) => Accounts.fromJson(json)).toList();
+    Accounts myAccount = Accounts.fromJson(account);
 
     return Scaffold(
+      backgroundColor: AppColors.backgroundColor,
       body: SafeArea(
         child: Column(
           children: [
@@ -64,7 +63,7 @@ class _AccountPageState extends State<AccountPage> {
                   width: 5,
                 ),
                 borderRadius: BorderRadius.circular(66.56),
-                color: Colors.blue,
+                color: Colors.purple,
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(66.56),
@@ -79,13 +78,53 @@ class _AccountPageState extends State<AccountPage> {
                 left: ratioCalculator.calculateWidth(25),
                 right: ratioCalculator.calculateWidth(24.92),
               ),
-              height: 500,
-              child: ListView.builder(
-                  itemCount: listAccountObject.length,
-                  itemBuilder: (context, index) {
-                    return CardAccount(accounts: listAccountObject[index]);
-                  }),
+              // height: 500,
+              child: CardAccount(accounts: myAccount),
             ),
+            SizedBox(
+              height: ratioCalculator.calculateHeight(23.68),
+            ),
+            Container(
+              margin: EdgeInsets.only(
+                left: ratioCalculator.calculateWidth(25),
+                right: ratioCalculator.calculateWidth(24.92),
+              ),
+              // height: 500,
+              child: CardAccountDos(accounts: myAccount),
+            ),
+            SizedBox(
+              height: ratioCalculator.calculateHeight(18),
+            ),
+            ButtonBar(
+              buttonPadding: EdgeInsets.only(
+                  left: ratioCalculator.calculateWidth(5)), // Padding del boton
+              children: [
+                Container(
+                  margin: EdgeInsets.only(
+                    right: ratioCalculator.calculateWidth(48),
+                    left: ratioCalculator.calculateWidth(41),
+                  ),
+                  height: ratioCalculator.calculateHeight(48),
+                  width: ratioCalculator.calculateWidth(301),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.56),
+                    color: AppColors.containerButtonColor,
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.botonCardWishlistColor,
+                    ),
+                    child: Center(
+                      child: Text(
+                        "Edit",
+                        style: AppTextStyle.text16W500TextStyle,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            )
           ],
         ),
       ),
@@ -107,109 +146,201 @@ class _CardAccountState extends State<CardAccount> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Column(
-        children: [
-          Container(
-            width: ratioCalculator.calculateWidth(340.08),
-            height: ratioCalculator.calculateHeight(228.04),
-            decoration: BoxDecoration(
-              boxShadow: [
-                // debe ir en lista
-                BoxShadow(
-                  // para dar sombra a el contenedor
-                  color: Color.fromRGBO(0, 0, 0, 0.02), // color de la sombra
-                  spreadRadius: 5.0, // Difuminación de la sombra
-                  blurRadius: 7.0, // Radio de la sombra
-                  offset: Offset(0.0, 2.0), // Desplazamiento de la sombra
-                )
-              ],
-              borderRadius: BorderRadius.circular(8),
-              color: AppColors.fondoCardWishlistColor,
+      shadowColor: Colors.black,
+      elevation: 10,
+      color: Colors.white,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        margin: EdgeInsets.only(
+          left: ratioCalculator.calculateWidth(16),
+          right: ratioCalculator.calculateWidth(32.64),
+          bottom: ratioCalculator.calculateHeight(30),
+          top: ratioCalculator.calculateHeight(12),
+        ),
+        child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.only(
+                bottom: ratioCalculator.calculateHeight(36),
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    child: Text(
+                      "Personal Info",
+                      style: AppTextStyle.text16W800TextStyle,
+                    ),
+                  ),
+                ],
+              ),
             ),
-            child: Row(
+            Container(
+              margin: EdgeInsets.only(
+                bottom: ratioCalculator.calculateHeight(36),
+                left: ratioCalculator.calculateWidth(16),
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    child: Text(
+                      "Your name",
+                      style: AppTextStyle.text14W500TextStyle,
+                    ),
+                  ),
+                  Spacer(),
+                  Container(
+                    child: Text(
+                      widget.accounts.yourName,
+                      style: AppTextStyle.textDos14W500TextStyle,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(
+                bottom: ratioCalculator.calculateHeight(36),
+                left: ratioCalculator.calculateWidth(16),
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    child: Text(
+                      "Education Level",
+                      style: AppTextStyle.text14W500TextStyle,
+                    ),
+                  ),
+                  Spacer(),
+                  Container(
+                    child: Text(
+                      widget.accounts.educationLevel,
+                      style: AppTextStyle.textDos14W500TextStyle,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Row(
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      margin: EdgeInsets.only(
-                          left: ratioCalculator.calculateWidth(16),
-                          top: ratioCalculator.calculateHeight(12),
-                          bottom: ratioCalculator.calculateHeight(38.92)),
-                      child: Text(
-                        "Personal Info",
-                        style: AppTextStyle.text16W800TextStyle,
-                      ),
-                    ),
-                    Column(
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              margin: EdgeInsets.only(
-                                left: ratioCalculator.calculateWidth(32.64),
-                                bottom: ratioCalculator.calculateHeight(25),
-                              ),
-                              child: Text("Your name"),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(
-                                    bottom: ratioCalculator.calculateHeight(25),
-                                  ),
-                                  child: Text(widget.accounts.yourName),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(
-                            left: ratioCalculator.calculateWidth(32.64),
-                            bottom: ratioCalculator.calculateHeight(25),
-                          ),
-                          child: Text("Education Level"),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(
-                            bottom: ratioCalculator.calculateHeight(25),
-                          ),
-                          child: Text(widget.accounts.educationLevel),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(
-                            left: ratioCalculator.calculateWidth(32.64),
-                          ),
-                          child: Text("Address"),
-                        ),
-                        Container(
-                          child: Text(widget.accounts.address),
-                        ),
-                      ],
-                    ),
-                  ],
+                Container(
+                  margin: EdgeInsets.only(
+                    left: ratioCalculator.calculateWidth(16),
+                  ),
+                  child: Text(
+                    "Address",
+                    style: AppTextStyle.text14W500TextStyle,
+                  ),
                 ),
-                // Column(
-                //   children: [
-                //     Text(widget.accounts.yourName),
-                //     Text(widget.accounts.educationLevel),
-                //     Text(widget.accounts.address),
-                //   ],
-                // )
+                Spacer(),
+                Container(
+                  child: Text(
+                    widget.accounts.address,
+                    style: AppTextStyle.textDos14W500TextStyle,
+                  ),
+                ),
               ],
             ),
-          ),
-        ],
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class CardAccountDos extends StatefulWidget {
+  final Accounts accounts;
+
+  const CardAccountDos({super.key, required this.accounts});
+
+  @override
+  State<CardAccountDos> createState() => _CardAccountDosState();
+}
+
+class _CardAccountDosState extends State<CardAccountDos> {
+  final RatioCalculator ratioCalculator = RatioCalculator();
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shadowColor: Colors.black,
+      elevation: 10,
+      color: Colors.white,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        margin: EdgeInsets.only(
+          left: ratioCalculator.calculateWidth(16),
+          right: ratioCalculator.calculateWidth(32.64),
+          bottom: ratioCalculator.calculateHeight(30),
+          top: ratioCalculator.calculateHeight(12),
+        ),
+        child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.only(
+                bottom: ratioCalculator.calculateHeight(36),
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    child: Text(
+                      "Contact Info",
+                      style: AppTextStyle.text16W800TextStyle,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(
+                bottom: ratioCalculator.calculateHeight(36),
+                left: ratioCalculator.calculateWidth(16),
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    child: Text(
+                      "Phone number",
+                      style: AppTextStyle.text14W500TextStyle,
+                    ),
+                  ),
+                  Spacer(),
+                  Container(
+                    child: Text(
+                      widget.accounts.phoneNumber,
+                      style: AppTextStyle.textDos14W500TextStyle,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(
+                bottom: ratioCalculator.calculateHeight(8.23),
+                left: ratioCalculator.calculateWidth(16),
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    child: Text(
+                      "Email",
+                      style: AppTextStyle.text14W500TextStyle,
+                    ),
+                  ),
+                  Spacer(),
+                  Container(
+                    child: Text(
+                      widget.accounts.email,
+                      style: AppTextStyle.textDos14W500TextStyle,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

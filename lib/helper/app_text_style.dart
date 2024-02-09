@@ -109,4 +109,14 @@ class AppTextStyle {
       fontSize: 12,
       fontWeight: FontWeight.w400,
       color: AppColors.textCardWishlistColor);
+  static const text14W500TextStyle = TextStyle(
+      fontFamily: 'Manrope',
+      fontSize: 14.56,
+      fontWeight: FontWeight.w500,
+      color: AppColors.textCardAccountColor);
+  static const textDos14W500TextStyle = TextStyle(
+      fontFamily: 'Manrope',
+      fontSize: 14.56,
+      fontWeight: FontWeight.w500,
+      color: AppColors.title1CategoriesColor);
 }

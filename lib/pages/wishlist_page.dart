@@ -23,6 +23,7 @@ class _WhishlistPageState extends State<WhishlistPage> {
         listWishlist.map((json) => Wishlists.fromJson(json)).toList();
 
     return Scaffold(
+      backgroundColor: AppColors.backgroundColor,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,8 +40,8 @@ class _WhishlistPageState extends State<WhishlistPage> {
             ),
             Container(
               margin: EdgeInsets.only(
-                left: ratioCalculator.calculateWidth(25.38),
-              ),
+                  left: ratioCalculator.calculateWidth(10),
+                  right: ratioCalculator.calculateWidth(10)),
               height: 550,
               child: ListView.builder(
                   itemCount: listWishlistObject.length,
@@ -102,9 +103,9 @@ class _CardWishlistState extends State<CardWishlist> {
                   padding: EdgeInsets.only(
                       top: ratioCalculator.calculateHeight(14),
                       left: ratioCalculator.calculateWidth(16),
-                      right: ratioCalculator.calculateWidth(33.20)),
-                  width: ratioCalculator.calculateWidth(200),
-                  height: ratioCalculator.calculateHeight(145),
+                      right: ratioCalculator.calculateWidth(20)),
+                  width: ratioCalculator.calculateWidth(190),
+                  height: ratioCalculator.calculateHeight(140),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -124,13 +125,15 @@ class _CardWishlistState extends State<CardWishlist> {
                               Spacer(),
                               SizedBox(
                                 // con esto se regula la onda expansiva que aparece al tocar el boton(efecto).
-                                width: ratioCalculator.calculateWidth(30),
+                                width: ratioCalculator.calculateWidth(25),
                                 height: ratioCalculator.calculateHeight(30),
                                 child: IconButton(
                                   splashRadius: 50,
                                   // constraints: BoxConstraints(maxHeight: 36),
                                   padding: EdgeInsets.all(0.5),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    print("object");
+                                  },
                                   icon: Icon(
                                     Icons.delete_forever,
                                     color: AppColors.iconCardWishlistColor,
@@ -180,24 +183,6 @@ class _CardWishlistState extends State<CardWishlist> {
                           ),
                         ],
                       ),
-                      // Column(
-                      //   children: [
-                      //     Row(
-                      //       children: [
-                      //         Text(
-                      //           " question",
-                      //           overflow: TextOverflow.ellipsis,
-                      //           style: AppTextStyle.text12W400CardWishlist,
-                      //         ),
-                      //         Text(
-                      //           ", remaining",
-                      //           overflow: TextOverflow.ellipsis,
-                      //           style: AppTextStyle.text12W400CardWishlist,
-                      //         ),
-                      //       ],
-                      //     ),
-                      //   ],
-                      // ),
                       SizedBox(
                         height: ratioCalculator.calculateHeight(8),
                       ),

@@ -36,6 +36,7 @@ class _HomePageState extends State<HomePage> {
         listCourserDos.map((json) => Coursers.fromJson(json)).toList();
 
     return Scaffold(
+      backgroundColor: AppColors.backgroundColor,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

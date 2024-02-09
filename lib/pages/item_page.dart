@@ -1,5 +1,6 @@
 import 'dart:ffi';
 import 'package:flutter/material.dart';
+import 'package:university_app/helper/app_colors.dart';
 import 'package:university_app/helper/app_text_style.dart';
 import 'package:university_app/helper/data_test/data_test.dart';
 import 'package:university_app/helper/ratio_calculator.dart';
@@ -31,6 +32,7 @@ class _ItemPageState extends State<ItemPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.backgroundColor,
       body: SafeArea(
         child: Column(
           children: [

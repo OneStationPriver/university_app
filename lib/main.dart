@@ -25,8 +25,10 @@ class MyApp extends StatelessWidget {
       figmaHeight: 844,
     );
     return MaterialApp(
+
       debugShowCheckedModeBanner: false,
       home: Page(),
+      theme: ThemeData(useMaterial3: false),
     );
   }
 }
@@ -45,6 +47,7 @@ class _PageState extends State<Page> {
   Widget build(BuildContext context) {
 
     return Scaffold(
+      backgroundColor: AppColors.backgroundColor,
       body: SafeArea(
         child: Column(
           children: [
