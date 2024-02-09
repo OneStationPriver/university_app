@@ -112,23 +112,91 @@ class _CardWishlistState extends State<CardWishlist> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            widget.wishlists.title,
-                            overflow: TextOverflow.ellipsis,
-                            style: AppTextStyle.text16W500HomeTextStyle,
+                          Row(
+                            children: [
+                              Container(
+                                child: Text(
+                                  widget.wishlists.title,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: AppTextStyle.text16W500HomeTextStyle,
+                                ),
+                              ),
+                              Spacer(),
+                              SizedBox(
+                                width: 30,
+                                height: 30,
+                                child: IconButton(
+                                  splashRadius: 50,
+                                  // constraints: BoxConstraints(maxHeight: 36),
+                                  padding: EdgeInsets.all(0.5),
+                                  onPressed: (){},
+                                  icon: Icon(
+                                    Icons.delete_forever,
+                                    color: AppColors.iconCardWishlistColor,
+                                    size: 25,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                          Text(
-                            widget.wishlists.question,
-                            overflow: TextOverflow.ellipsis,
-                            style: AppTextStyle.text12W400CardWishlist,
+                          Row(
+                            children: [
+                              Container(
+                                child: Text(
+                                  widget.wishlists.question,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: AppTextStyle.textCardWishlist,
+                                ),
+                              ),
+                              Container(
+                                child: Text(
+                                  " question",
+                                  overflow: TextOverflow.ellipsis,
+                                  style:
+                                      AppTextStyle.text12W400CardWishlistColor,
+                                ),
+                              )
+                            ],
                           ),
-                          Text(
-                            widget.wishlists.time,
-                            overflow: TextOverflow.ellipsis,
-                            style: AppTextStyle.text12W400CardWishlist,
+                          Row(
+                            children: [
+                              Container(
+                                child: Text(
+                                  widget.wishlists.time,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: AppTextStyle.textCardWishlist,
+                                ),
+                              ),
+                              Container(
+                                child: Text(
+                                  " remaining",
+                                  overflow: TextOverflow.ellipsis,
+                                  style:
+                                      AppTextStyle.text12W400CardWishlistColor,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
+                      // Column(
+                      //   children: [
+                      //     Row(
+                      //       children: [
+                      //         Text(
+                      //           " question",
+                      //           overflow: TextOverflow.ellipsis,
+                      //           style: AppTextStyle.text12W400CardWishlist,
+                      //         ),
+                      //         Text(
+                      //           ", remaining",
+                      //           overflow: TextOverflow.ellipsis,
+                      //           style: AppTextStyle.text12W400CardWishlist,
+                      //         ),
+                      //       ],
+                      //     ),
+                      //   ],
+                      // ),
                       SizedBox(
                         height: ratioCalculator.calculateHeight(8),
                       ),

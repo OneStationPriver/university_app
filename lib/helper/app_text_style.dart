@@ -99,4 +99,14 @@ class AppTextStyle {
       fontSize: 16.64,
       fontWeight: FontWeight.w800,
       color: AppColors.title1CategoriesColor);
+  static const textCardWishlist = TextStyle(
+      fontFamily: 'Poppins',
+      fontSize: 12,
+      fontWeight: FontWeight.w500,
+      color: AppColors.title5CategoriesColor);
+  static const text12W400CardWishlistColor = TextStyle(
+      fontFamily: 'Poppins',
+      fontSize: 12,
+      fontWeight: FontWeight.w400,
+      color: AppColors.textCardWishlistColor);
 }

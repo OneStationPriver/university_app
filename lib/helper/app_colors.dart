@@ -23,4 +23,6 @@ class AppColors {
   static const Color fondoCardWishlistColor = Color.fromRGBO(255, 255, 255, 1);
   static const Color botonCardWishlistColor = Color.fromRGBO(132, 31, 253, 1);
   // ------------------------------------------------
+  static const Color textCardWishlistColor = Color.fromRGBO(0, 0, 0, 0.3);
+  static const Color iconCardWishlistColor = Color.fromRGBO(177, 177, 177, 1);
 }
