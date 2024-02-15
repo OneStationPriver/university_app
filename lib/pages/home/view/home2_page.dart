@@ -6,6 +6,7 @@ import 'package:university_app/models/categorys/categorys.dart';
 import 'package:university_app/models/coursers/coursers.dart';
 import 'package:provider/provider.dart';
 import 'package:university_app/pages/home/controller/home_controller.dart';
+import 'package:university_app/pages/other_page.dart';
 
 class Home2Page extends StatefulWidget {
   const Home2Page({super.key});
@@ -73,8 +74,8 @@ class _Home2PageState extends State<Home2Page> {
                       itemBuilder: (context, index) {
                         return CardCourse(
                           coursers: controller.listCourserObject[index],
-                          fatherContext: contextF,
-                          index: index,
+                          // fatherContext: contextF,
+                          // index: index,
                         );
                       }),
                 ),
@@ -133,8 +134,8 @@ class _Home2PageState extends State<Home2Page> {
                       itemBuilder: (context, index) {
                         return CardCourse(
                           coursers: controller.listCourser2Object[index],
-                          fatherContext: contextF,
-                          index: index,
+                          // fatherContext: contextF,
+                          // index: index,
                         );
                       }),
                 ),
@@ -150,14 +151,13 @@ class _Home2PageState extends State<Home2Page> {
 // Clase para la Primera Card...
 class CardCourse extends StatefulWidget {
   final Coursers coursers;
-  final BuildContext fatherContext;
-  final int index;
+  // final BuildContext fatherContext;
+  // final int index;
 
   const CardCourse(
       {super.key,
       required this.coursers,
-      required this.fatherContext,
-      required this.index});
+      });
 
   @override
   State<CardCourse> createState() => _CardCourseState();
@@ -169,7 +169,7 @@ class _CardCourseState extends State<CardCourse> {
   @override
   Widget build(BuildContext context) {
     final controller =
-        Provider.of<HomeController>(widget.fatherContext, listen: true);
+        Provider.of<HomeController>(context);
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
@@ -186,12 +186,17 @@ class _CardCourseState extends State<CardCourse> {
             height: ratioCalculator.calculateHeight(170.92),
             child: Column(
               children: <Widget>[
-                Container(
-                  margin: EdgeInsets.all(16.92),
-                  child: Image.network(
-                    widget.coursers.urlImage,
-                    height: ratioCalculator.calculateHeight(81.23),
-                    width: ratioCalculator.calculateHeight(135.38),
+                InkWell(
+                  onTap: (){
+                     navigationToNewPage();
+                  },
+                  child: Container(
+                    margin: EdgeInsets.all(16.92),
+                    child: Image.network(
+                      widget.coursers.urlImage,
+                      height: ratioCalculator.calculateHeight(81.23),
+                      width: ratioCalculator.calculateHeight(135.38),
+                    ),
                   ),
                 ),
                 Container(
@@ -240,6 +245,14 @@ class _CardCourseState extends State<CardCourse> {
           ),
         ),
       ],
+    );
+  }
+    void navigationToNewPage() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => OtherPage(),
+      ),
     );
   }
 }

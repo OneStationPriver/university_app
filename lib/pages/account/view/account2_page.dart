@@ -5,14 +5,14 @@ import 'package:university_app/helper/data_test/data_test.dart';
 import 'package:university_app/helper/ratio_calculator.dart';
 import 'package:university_app/models/accounts/accounts.dart';
 
-class AccountPage extends StatefulWidget {
-  const AccountPage({super.key});
+class Account2Page extends StatefulWidget {
+  const Account2Page({super.key});
 
   @override
-  State<AccountPage> createState() => _AccountPageState();
+  State<Account2Page> createState() => _Account2PageState();
 }
 
-class _AccountPageState extends State<AccountPage> {
+class _Account2PageState extends State<Account2Page> {
   final RatioCalculator ratioCalculator = RatioCalculator();
 
   @override

@@ -28,7 +28,7 @@ class ItemPage extends StatefulWidget {
 
 class _ItemPageState extends State<ItemPage> {
   final RatioCalculator ratioCalculator = RatioCalculator();
- 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,13 +62,12 @@ class _ItemPageState extends State<ItemPage> {
             ),
             widget.isBody
                 ? Container(
-                  padding: EdgeInsets.all(5),
+                    padding: EdgeInsets.all(5),
                     decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.purple,
-                        width: 2,
-                      )
-                    ),
+                        border: Border.all(
+                      color: Colors.purple,
+                      width: 2,
+                    )),
                     height: ratioCalculator.calculateHeight(155),
                     margin: EdgeInsets.only(
                         left: ratioCalculator.calculateWidth(44),

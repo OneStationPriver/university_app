@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:university_app/helper/data_test/data_test.dart';
 import 'package:university_app/models/categorys/categorys.dart';
 import 'package:university_app/models/coursers/coursers.dart';
+import 'package:university_app/pages/other_page.dart';
 
 class HomeController extends ChangeNotifier {
   List<dynamic> listCourser = courser["coursers"];
@@ -13,6 +14,7 @@ class HomeController extends ChangeNotifier {
 
   List<Map<String, dynamic>> listCourserDos = courserDos["coursersDos"];
   List<Coursers> listCourser2Object = [];
+
 
   void init() {
     listCourserObject =
