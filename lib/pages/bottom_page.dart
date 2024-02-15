@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:university_app/helper/app_colors.dart';
 import 'package:university_app/pages/examns_page.dart';
+import 'package:university_app/pages/home/view/home2_page.dart';
 import 'package:university_app/pages/home_page.dart';
 import 'package:university_app/pages/search_page.dart';
 import 'package:university_app/pages/account_page.dart';
-import 'package:university_app/pages/wishlist_page.dart';
+import 'package:university_app/pages/wishlist/view/wishlist2_page.dart';
 
 class BottomPage extends StatefulWidget {
   const BottomPage({super.key});
@@ -51,10 +52,10 @@ class _BottomPageState extends State<BottomPage> {
 
   List<Widget> _buildScreens() {
     return [
-      HomePage(),
+      Home2Page(),
       SearchPage(),
       ExamnsPage(),
-      WhishlistPage(),
+      Wishlist2Page(),
       AccountPage(),
     ];
   }
