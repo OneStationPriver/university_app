@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:university_app/helper/app_colors.dart';
 import 'package:university_app/helper/app_text_style.dart';
 import 'package:university_app/helper/data_test/data_test.dart';
 import 'package:university_app/helper/ratio_calculator.dart';
 import 'package:university_app/models/wishlists/wishlists.dart';
+import 'package:university_app/pages/account_page.dart';
 
 class WhishlistPage extends StatefulWidget {
   const WhishlistPage({super.key});
@@ -13,15 +15,42 @@ class WhishlistPage extends StatefulWidget {
 }
 
 class _WhishlistPageState extends State<WhishlistPage> {
+  // creo la lista fuera del build para tener acesos a la lista desde la otra clase.
   final RatioCalculator ratioCalculator = RatioCalculator();
+  List<dynamic> listWishlist = wishlist["wishlists"];
+  List<Wishlists> listWishlistObject = [];
+
+  // Con el initState() se carga una ves al cargar la pagina.
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    // Convercion de Json a Object:
+    listWishlistObject =
+        listWishlist.map((json) => Wishlists.fromJson(json)).toList();
+  }
+
+  // En esta funcion se remueve un elemento de la lista con el removeAt indicandole con el index que sera el elemento que se precione.
+  // El setState() es para recargar la pagina con los cambios generados.
+  void removeElementWishlist(int index) {
+    listWishlistObject.removeAt(index);
+    setState(() {});
+  }
+
+  // En esta funcion creo el objeto con sus parametros y se lo agrego a la lista listWishtObject con el add.
+  void addNewElement() {
+    final Wishlists wishlists = Wishlists(
+      urlImage: "https://www.ibm.com/content/dam/adobe-cms/instana/media_logo/Docker.png/_jcr_content/renditions/cq5dam.web.1280.1280.png",
+      title: "Docker",
+      question: "32",
+      time: "55min",
+    );
+    listWishlistObject.add(wishlists);
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
-    // Convercion de Json a Object:
-    List<dynamic> listWishlist = wishlist["wishlists"];
-    List<Wishlists> listWishlistObject =
-        listWishlist.map((json) => Wishlists.fromJson(json)).toList();
-
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       body: SafeArea(
@@ -46,7 +75,15 @@ class _WhishlistPageState extends State<WhishlistPage> {
               child: ListView.builder(
                   itemCount: listWishlistObject.length,
                   itemBuilder: (context, index) {
-                    return CardWishlist(wishlists: listWishlistObject[index]);
+                    return CardWishlist(
+                      wishlists: listWishlistObject[index],
+                      remove: () {
+                        removeElementWishlist(index);
+                      },
+                      add: () {
+                        addNewElement();
+                      },
+                    );
                   }),
             ),
           ],
@@ -58,8 +95,14 @@ class _WhishlistPageState extends State<WhishlistPage> {
 
 class CardWishlist extends StatefulWidget {
   final Wishlists wishlists;
+  final VoidCallback remove;
+  final VoidCallback add;
 
-  const CardWishlist({super.key, required this.wishlists});
+  const CardWishlist(
+      {super.key,
+      required this.wishlists,
+      required this.remove,
+      required this.add});
 
   @override
   State<CardWishlist> createState() => _CardWishlistState();
@@ -67,6 +110,7 @@ class CardWishlist extends StatefulWidget {
 
 class _CardWishlistState extends State<CardWishlist> {
   final RatioCalculator ratioCalculator = RatioCalculator();
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -132,7 +176,7 @@ class _CardWishlistState extends State<CardWishlist> {
                                   // constraints: BoxConstraints(maxHeight: 36),
                                   padding: EdgeInsets.all(0.5),
                                   onPressed: () {
-                                    print("object");
+                                    widget.remove();
                                   },
                                   icon: Icon(
                                     Icons.delete_forever,
@@ -198,7 +242,9 @@ class _CardWishlistState extends State<CardWishlist> {
                               color: AppColors.containerButtonColor,
                             ),
                             child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                widget.add();
+                              },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor:
                                     AppColors.botonCardWishlistColor,

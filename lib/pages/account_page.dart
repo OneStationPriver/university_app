@@ -103,6 +103,7 @@ class _AccountPageState extends State<AccountPage> {
                   margin: EdgeInsets.only(
                     right: ratioCalculator.calculateWidth(48),
                     left: ratioCalculator.calculateWidth(41),
+                    bottom: ratioCalculator.calculateHeight(15),
                   ),
                   height: ratioCalculator.calculateHeight(48),
                   width: ratioCalculator.calculateWidth(301),
@@ -147,7 +148,7 @@ class _CardAccountState extends State<CardAccount> {
   Widget build(BuildContext context) {
     return Card(
       shadowColor: Colors.black,
-      elevation: 10,
+      elevation: 5,
       color: Colors.white,
       child: Container(
         decoration: BoxDecoration(
@@ -264,7 +265,7 @@ class _CardAccountDosState extends State<CardAccountDos> {
   Widget build(BuildContext context) {
     return Card(
       shadowColor: Colors.black,
-      elevation: 10,
+      elevation: 5,
       color: Colors.white,
       child: Container(
         decoration: BoxDecoration(
@@ -273,7 +274,7 @@ class _CardAccountDosState extends State<CardAccountDos> {
         margin: EdgeInsets.only(
           left: ratioCalculator.calculateWidth(16),
           right: ratioCalculator.calculateWidth(32.64),
-          bottom: ratioCalculator.calculateHeight(30),
+          bottom: ratioCalculator.calculateHeight(20),
           top: ratioCalculator.calculateHeight(12),
         ),
         child: Column(

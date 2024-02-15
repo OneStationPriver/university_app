@@ -99,7 +99,7 @@ class _HomePageState extends State<HomePage> {
                   bottom: ratioCalculator.calculateHeight(17.42)),
               child: Text(
                 "Categories",
-                style: AppTextStyle.text16W500HomeTextStyle,
+                style: AppTextStyle.text16W500TextStyle2,
               ),
             ),
             // Card de categories:
@@ -126,7 +126,7 @@ class _HomePageState extends State<HomePage> {
                   bottom: ratioCalculator.calculateHeight(17.42)),
               child: Text(
                 "Top Courses",
-                style: AppTextStyle.text16W500HomeTextStyle,
+                style: AppTextStyle.text16W500TextStyle2,
               ),
             ),
             SizedBox(

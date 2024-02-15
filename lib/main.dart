@@ -25,7 +25,6 @@ class MyApp extends StatelessWidget {
       figmaHeight: 844,
     );
     return MaterialApp(
-
       debugShowCheckedModeBanner: false,
       home: Page(),
       theme: ThemeData(useMaterial3: false),
@@ -45,7 +44,6 @@ class _PageState extends State<Page> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       body: SafeArea(
@@ -54,7 +52,8 @@ class _PageState extends State<Page> {
             Container(
               height: ratioCalculator.calculateHeight(708),
               child: PageView(
-                physics: BouncingScrollPhysics(), // Genera un efecto de rebote al llegar al final de la lista.
+                physics:
+                    BouncingScrollPhysics(), // Genera un efecto de rebote al llegar al final de la lista.
                 children: <Widget>[
                   ItemPage(
                     title: "Welcome",
