@@ -6,6 +6,7 @@ import 'package:university_app/models/categorys/categorys.dart';
 import 'package:university_app/models/coursers/coursers.dart';
 import 'package:provider/provider.dart';
 import 'package:university_app/pages/home/controller/home_controller.dart';
+import 'package:university_app/pages/home/controller/state/home_state.dart';
 import 'package:university_app/pages/other_page.dart';
 
 class Home2Page extends StatefulWidget {
@@ -20,7 +21,7 @@ class _Home2PageState extends State<Home2Page> {
   Widget build(BuildContext context) {
     final RatioCalculator ratioCalculator = RatioCalculator();
     return ChangeNotifierProvider(
-      create: (_) => HomeController()..init(),
+      create: (_) => HomeController(const HomeState())..init(),
       child: Scaffold(
         body: SafeArea(
           child: Builder(builder: (contextF) {
@@ -67,17 +68,22 @@ class _Home2PageState extends State<Home2Page> {
                   margin: EdgeInsets.only(
                       left: ratioCalculator.calculateWidth(25.38)),
                   height: 170,
-                  child: ListView.builder(
-                      itemCount: controller.listCourserObject.length,
-                      scrollDirection: Axis
-                          .horizontal, // Esto vuelve la lista para deslizar de forma lateral.
-                      itemBuilder: (context, index) {
-                        return CardCourse(
-                          coursers: controller.listCourserObject[index],
-                          // fatherContext: contextF,
-                          // index: index,
-                        );
-                      }),
+                  child:
+                      controller.state.fetchRecommendedState.when(loading: () {
+                    return Center(child: CircularProgressIndicator());
+                  }, loaded: (list) {
+                    return ListView.builder(
+                        itemCount: list.length,
+                        scrollDirection: Axis
+                            .horizontal, // Esto vuelve la lista para deslizar de forma lateral.
+                        itemBuilder: (context, index) {
+                          return CardCourse(
+                            coursers: list[index],
+                            // fatherContext: contextF,
+                            // index: index,
+                          );
+                        });
+                  }),
                 ),
                 SizedBox(
                   height: ratioCalculator.calculateHeight(7.54),
@@ -96,16 +102,20 @@ class _Home2PageState extends State<Home2Page> {
                 Container(
                   margin: EdgeInsets.only(
                       left: ratioCalculator.calculateWidth(25.54)),
-                  height: 102.15, // o utilizar 64.27
-                  child: ListView.builder(
-                      itemCount: controller.listCategoryObject.length,
-                      scrollDirection: Axis
-                          .horizontal, // Esto vuelve la lista para deslizar de forma lateral.
-                      itemBuilder: (context, index) {
-                        return CardCategories(
-                          categorys: controller.listCategoryObject[index],
-                        );
-                      }),
+                  height: 102.15,
+                  child: controller.state.fetchCategorysState.when(loading: () {
+                    return Center(child: CircularProgressIndicator());
+                  }, loaded: (list) {
+                    return ListView.builder(
+                        itemCount: list.length,
+                        scrollDirection: Axis
+                            .horizontal, // Esto vuelve la lista para deslizar de forma lateral.
+                        itemBuilder: (context, index) {
+                          return CardCategories(
+                            categorys: list[index],
+                          );
+                        });
+                  }),
                 ),
                 SizedBox(
                   height: ratioCalculator.calculateHeight(20.42),
@@ -127,17 +137,22 @@ class _Home2PageState extends State<Home2Page> {
                   margin: EdgeInsets.only(
                       left: ratioCalculator.calculateWidth(25.38)),
                   height: 170,
-                  child: ListView.builder(
-                      itemCount: controller.listCourser2Object.length,
-                      scrollDirection: Axis
-                          .horizontal, // Esto vuelve la lista para deslizar de forma lateral.
-                      itemBuilder: (context, index) {
-                        return CardCourse(
-                          coursers: controller.listCourser2Object[index],
-                          // fatherContext: contextF,
-                          // index: index,
-                        );
-                      }),
+                  child:
+                      controller.state.fetchTopCoursersState.when(loading: () {
+                    return Center(child: CircularProgressIndicator());
+                  }, loaded: (list) {
+                    return ListView.builder(
+                        itemCount: list.length,
+                        scrollDirection: Axis
+                            .horizontal, // Esto vuelve la lista para deslizar de forma lateral.
+                        itemBuilder: (context, index) {
+                          return CardCourse(
+                            coursers: list[index],
+                            // fatherContext: contextF,
+                            // index: index,
+                          );
+                        });
+                  }),
                 ),
               ],
             );
@@ -154,10 +169,10 @@ class CardCourse extends StatefulWidget {
   // final BuildContext fatherContext;
   // final int index;
 
-  const CardCourse(
-      {super.key,
-      required this.coursers,
-      });
+  const CardCourse({
+    super.key,
+    required this.coursers,
+  });
 
   @override
   State<CardCourse> createState() => _CardCourseState();
@@ -168,8 +183,7 @@ class _CardCourseState extends State<CardCourse> {
 
   @override
   Widget build(BuildContext context) {
-    final controller =
-        Provider.of<HomeController>(context);
+    final controller = Provider.of<HomeController>(context);
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
@@ -187,8 +201,8 @@ class _CardCourseState extends State<CardCourse> {
             child: Column(
               children: <Widget>[
                 InkWell(
-                  onTap: (){
-                     navigationToNewPage();
+                  onTap: () {
+                    navigationToNewPage();
                   },
                   child: Container(
                     margin: EdgeInsets.all(16.92),
@@ -247,7 +261,8 @@ class _CardCourseState extends State<CardCourse> {
       ],
     );
   }
-    void navigationToNewPage() {
+
+  void navigationToNewPage() {
     Navigator.push(
       context,
       MaterialPageRoute(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:university_app/helper/app_colors.dart';
 import 'package:university_app/pages/account/view/account2_page.dart';
-import 'package:university_app/pages/examns_page.dart';
+import 'package:university_app/pages/examns/view/examns_page.dart';
 import 'package:university_app/pages/home/view/home2_page.dart';
 import 'package:university_app/pages/search/view/search2_page.dart';
 import 'package:university_app/pages/wishlist/view/wishlist2_page.dart';
