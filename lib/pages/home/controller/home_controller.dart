@@ -7,6 +7,7 @@ import 'package:university_app/pages/home/controller/state/home_state.dart';
 import 'package:university_app/pages/other_page.dart';
 import 'package:university_app/state_notifier.dart';
 
+// para usar el estado debes usar "extends StateNotifer" con "ChangeNotifer" no funciona.
 class HomeController extends StateNotifier<HomeState> {
   List<dynamic> listCourser = courser["coursers"];
   List<Coursers> listCourserObject = [];

@@ -4,7 +4,8 @@ import 'package:university_app/helper/app_colors.dart';
 import 'package:university_app/helper/app_text_style.dart';
 import 'package:university_app/helper/ratio_calculator.dart';
 import 'package:university_app/models/wishlists/wishlists.dart';
-import 'package:university_app/pages/wishlist/controller/wishliat_controller.dart';
+import 'package:university_app/pages/wishlist/controller/state/wishlist_state.dart';
+import 'package:university_app/pages/wishlist/controller/wishlist_controller.dart';
 
 class Wishlist2Page extends StatelessWidget {
   const Wishlist2Page({super.key});
@@ -13,7 +14,7 @@ class Wishlist2Page extends StatelessWidget {
   Widget build(BuildContext context) {
     final RatioCalculator ratioCalculator = RatioCalculator();
     return ChangeNotifierProvider(
-      create: (_) => WishlistController()..init(),
+      create: (_) => WishlistController(const wishlistState())..init(),
       child: Scaffold(
         body: SafeArea(child: Builder(builder: (contextF) {
           final controller = Provider.of<WishlistController>(contextF);
@@ -35,15 +36,19 @@ class Wishlist2Page extends StatelessWidget {
                     left: ratioCalculator.calculateWidth(10),
                     right: ratioCalculator.calculateWidth(10)),
                 height: 550,
-                child: ListView.builder(
-                    itemCount: controller.listWishlistObject.length,
-                    itemBuilder: (context, index) {
-                      return CardWishlist(
-                        wishlists: controller.listWishlistObject[index],
-                        fhaterContext: contextF,
-                        index: index,
-                      );
-                    }),
+                child: controller.state.fetchWishlistState.when(loading: () {
+                  return Center(child: CircularProgressIndicator());
+                }, loaded: (list) {
+                  return ListView.builder(
+                      itemCount: list.length,
+                      itemBuilder: (context, index) {
+                        return CardWishlist(
+                          wishlists: list[index],
+                          fhaterContext: contextF,
+                          index: index,
+                        );
+                      });
+                }),
               ),
             ],
           );
@@ -74,7 +79,8 @@ class _CardWishlistState extends State<CardWishlist> {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Provider.of<WishlistController>(widget.fhaterContext, listen: true);
+    final controller =
+        Provider.of<WishlistController>(widget.fhaterContext, listen: true);
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[

@@ -2,14 +2,25 @@ import "package:flutter/material.dart";
 import 'package:provider/provider.dart';
 import 'package:university_app/helper/data_test/data_test.dart';
 import 'package:university_app/models/wishlists/wishlists.dart';
+import 'package:university_app/pages/wishlist/controller/state/wishlist_state.dart';
+import 'package:university_app/state_notifier.dart';
 
-class WishlistController extends ChangeNotifier {
+// para usar el estado debes usar "extends StateNotifer" con "ChangeNotifer" no funciona.
+class WishlistController extends StateNotifier {
   List<dynamic> listWishlist = wishlist["wishlists"];
   List<Wishlists> listWishlistObject = [];
 
+  WishlistController(super._state);
+  
   void init() {
     listWishlistObject =
         listWishlist.map((json) => Wishlists.fromJson(json)).toList();
+
+    Future.delayed(Duration(seconds: 5), () {
+      state = state.copyWith(
+          fetchWishlistState:
+              FetchWishlistState.loaded(listWishlistObject));
+    });
   }
 
   void change() {
@@ -30,6 +41,6 @@ class WishlistController extends ChangeNotifier {
       time: "55min",
     );
     listWishlistObject.add(wishlists);
-   notifyListeners();
+    notifyListeners();
   }
 }
